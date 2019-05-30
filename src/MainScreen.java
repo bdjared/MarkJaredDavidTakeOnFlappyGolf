@@ -37,6 +37,10 @@ public class MainScreen extends Application {
         level1.setMaxSize(350, 350);
         gridPane.add(level1, 4, 0);
 
+        Rectangle filler2 = new Rectangle(45, 45);
+        filler2.setFill(Color.WHITE);
+        filler2.setStroke(Color.WHITE);
+        gridPane.add(filler2, 3, 0);
 
         level1.setOnMousePressed(e -> {
             Stage stage = new Stage();
