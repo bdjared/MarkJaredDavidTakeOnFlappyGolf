@@ -33,9 +33,9 @@ public class MainScreen extends Application {
         gridPane.add(filler1, 1,0);
 
         Button level3 = new Button("Level 3");
-        level1.setShape(new Circle(350));
-        level1.setMaxSize(350, 350);
-        gridPane.add(level1, 4, 0);
+        level3.setShape(new Circle(350));
+        level3.setMaxSize(350, 350);
+        gridPane.add(level3, 4, 0);
 
         Rectangle filler2 = new Rectangle(45, 45);
         filler2.setFill(Color.WHITE);
