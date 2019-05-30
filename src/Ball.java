@@ -10,4 +10,7 @@ public class Ball extends Circle {
     public static void left() {
 
     }
+    public static right(){
+
+    }
 }
