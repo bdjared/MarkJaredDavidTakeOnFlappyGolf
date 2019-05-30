@@ -25,13 +25,13 @@ public class Ball extends Circle {
         vSpeed += 5;
     }
 
-    public void onFrame(Pane pane) {
+    public void onFrame() {
         vSpeed -= GRAVITY;
         hSpeed -= FRICTION;
-        if (this.getCenterX() + hSpeed > pane.getWidth() || this.getCenterX() + hSpeed < 0) {
+        if (getCenterX() + hSpeed > 900 || getCenterX() + hSpeed < 0) {
             hSpeed /= -2;
         }
-        this.setCenterX(this.getCenterX() + hSpeed);
-        this.setCenterY(this.getCenterY() + vSpeed);
+        setCenterX(getCenterX() + hSpeed);
+        setCenterY(getCenterY() + vSpeed);
     }
 }
