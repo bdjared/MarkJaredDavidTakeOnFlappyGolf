@@ -10,7 +10,7 @@ public class Ball extends Circle {
     public Ball(int xPos, int yPos) {
         hSpeed = 0;
         vSpeed = 0;
-        setRadius(5);
+        setRadius(10);
         setCenterX(xPos);
         setCenterY(yPos);
     }
