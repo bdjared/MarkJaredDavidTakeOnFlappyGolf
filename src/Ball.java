@@ -5,9 +5,12 @@ public class Ball extends Circle {
     private double hSpeed;
     private double vSpeed;
 
-    public Ball() {
+    public Ball(int xPos, int yPos) {
         hSpeed = 0;
         vSpeed = 0;
+        setRadius(5);
+        setCenterX(xPos);
+        setCenterY(yPos);
     }
 
     public void jumpLeft() {
