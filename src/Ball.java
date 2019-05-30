@@ -1,31 +1,63 @@
 import javafx.scene.shape.Circle;
 
 public class Ball extends Circle {
-    public final double GRAVITY = .32;
+    private final double GRAVITY = .001;
+    private final double FRICTION = .15;
     private double hSpeed;
     private double vSpeed;
 
     public Ball(int xPos, int yPos) {
         hSpeed = 0;
         vSpeed = 0;
-        setRadius(5);
+        setRadius(10);
         setCenterX(xPos);
         setCenterY(yPos);
     }
 
     public void jumpLeft() {
-        hSpeed += 10;
-        vSpeed += 5;
+        hSpeed -= .5;
+        vSpeed += .15;
+        this.onFrame();
     }
 
     public void jumpRight() {
-        hSpeed -= 10;
-        vSpeed += 5;
+        hSpeed += .5;
+        vSpeed += .15;
+        this.onFrame();
+    }
+
+    public double getGravity() {
+        return GRAVITY;
+    }
+
+    public double getFriction() {
+        return FRICTION;
+    }
+
+    public double getHSpeed() {
+        return hSpeed;
+    }
+
+    public double getVSpeed() {
+        return vSpeed;
+    }
+
+    public void gravity() {
+        vSpeed -= GRAVITY;
     }
 
     public void onFrame() {
         vSpeed -= GRAVITY;
-        this.setCenterX(this.getCenterX() + hSpeed);
-        this.setCenterY(this.getCenterY() + vSpeed);
+        hSpeed -= FRICTION;
+        if (getCenterX() + hSpeed > 900 || getCenterX() + hSpeed < 0) {
+            hSpeed /= -2;
+        }
+
+        if (getCenterY() + vSpeed > 600 || getCenterX() + vSpeed < 0) {
+            vSpeed /= -2;
+        }
+
+        setCenterX(getCenterX() + hSpeed);
+        setCenterY(getCenterY() - vSpeed);
     }
 }
