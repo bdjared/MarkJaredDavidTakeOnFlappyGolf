@@ -53,7 +53,6 @@ public class MainScreen extends Application {
                 else if (a.getCode() == KeyCode.RIGHT)
                     lvl1.getPlayer().jumpRight();
             });
-            scene.setOnKeyReleased(b -> lvl1.getPlayer().gravity());
             primaryStage.setScene(scene);
             primaryStage.show();
             primaryStage.requestFocus();

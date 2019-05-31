@@ -1,11 +1,15 @@
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
+import javafx.util.Duration;
 
 public class Ball extends Circle {
-    private final double GRAVITY = .31;
-    private final double FRICTION = .47;
+    private final double GRAVITY = .00031;
+    private final double FRICTION = .96;
     private double hSpeed;
     private double vSpeed;
+    private Timeline animation;
 
     public Ball(int xPos, int yPos) {
         hSpeed = 0;
@@ -14,18 +18,17 @@ public class Ball extends Circle {
         setCenterX(xPos);
         setCenterY(yPos);
         setFill(Color.WHITE);
+        play();
     }
 
     public void jumpLeft() {
-        hSpeed -= .5;
+        hSpeed -= 10;
         vSpeed += .24;
-        this.onFrame();
     }
 
     public void jumpRight() {
-        hSpeed += .5;
+        hSpeed += 10;
         vSpeed += .24;
-        this.onFrame();
     }
 
     public double getGravity() {
@@ -44,22 +47,25 @@ public class Ball extends Circle {
         return vSpeed;
     }
 
-    public void gravity() {
-        vSpeed -= GRAVITY;
+    public Timeline getAnimation() {
+        return animation;
     }
 
-    public void onFrame() {
-        vSpeed -= GRAVITY;
-        hSpeed *= FRICTION;
-        if (getCenterX() + hSpeed > 800 || getCenterX() + hSpeed < 0) {
-            hSpeed /= -2;
-        }
+    public void play() {
+        animation = new Timeline(new KeyFrame(Duration.millis(50), e -> {
+            vSpeed -= GRAVITY;
+            hSpeed *= FRICTION;
+            if (getCenterX() + hSpeed + getRadius() > 800 || getCenterX() + hSpeed - getRadius() < 0) {
+                hSpeed /= -2;
+            }
 
-        if (getCenterY() + vSpeed > 500 || getCenterX() + vSpeed < 0) {
-            vSpeed /= -2;
-        }
-
-        setCenterX(getCenterX() + hSpeed);
-        setCenterY(getCenterY() - vSpeed);
+            if (getCenterY() + vSpeed + getRadius() > 325 || getCenterX() + vSpeed - getRadius() < 0) {
+                vSpeed /= -2;
+            }
+            setCenterX(getCenterX() + hSpeed);
+            setCenterY(getCenterY() - vSpeed);
+        }));
+        animation.setCycleCount(Timeline.INDEFINITE);
+        animation.play();
     }
 }

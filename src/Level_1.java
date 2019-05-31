@@ -27,7 +27,7 @@ public class Level_1 extends Pane {
         rightBttn.setY(375);
         rightBttn.setOnMouseClicked(e -> player.jumpRight());
 
-        getChildren().addAll(sky, player, grass, leftBttn, rightBttn);
+        getChildren().addAll(sky, grass, player, leftBttn, rightBttn);
     }
 
     public Ball getPlayer() {
