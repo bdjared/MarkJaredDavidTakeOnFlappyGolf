@@ -24,13 +24,15 @@ public class Ball extends Circle {
     public void jumpLeft() {
         hSpeed -= 5;
         vSpeed -= 5;
-        setGravityZero();
+        if (vSpeed > 0)
+        gravityJump();
     }
 
     public void jumpRight() {
         hSpeed += 5;
         vSpeed -= 5;
-        setGravityZero();
+        if (vSpeed > 0)
+        gravityJump();
     }
 
     public double getGravity() {
@@ -53,12 +55,11 @@ public class Ball extends Circle {
         return animation;
     }
 
-    public void setGravityZero(){
-        this.gravity = 0;
+    public void gravityJump(){
+        vSpeed = -5;
     }
 
     public void play() {
-        gravity = 1;
         animation = new Timeline(new KeyFrame(Duration.millis(50), e -> {
             vSpeed += gravity;
             hSpeed *= FRICTION;
