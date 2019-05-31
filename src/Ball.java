@@ -5,7 +5,7 @@ import javafx.scene.shape.Circle;
 import javafx.util.Duration;
 
 public class Ball extends Circle {
-    private final double GRAVITY = .00031;
+    private final double GRAVITY = .31;
     private final double FRICTION = .96;
     private double hSpeed;
     private double vSpeed;
@@ -22,13 +22,13 @@ public class Ball extends Circle {
     }
 
     public void jumpLeft() {
-        hSpeed -= 10;
-        vSpeed += .24;
+        hSpeed -= 5;
+        vSpeed += 5;
     }
 
     public void jumpRight() {
-        hSpeed += 10;
-        vSpeed += .24;
+        hSpeed += 5;
+        vSpeed += 5;
     }
 
     public double getGravity() {
@@ -53,7 +53,7 @@ public class Ball extends Circle {
 
     public void play() {
         animation = new Timeline(new KeyFrame(Duration.millis(50), e -> {
-            vSpeed -= GRAVITY;
+            vSpeed += GRAVITY;
             hSpeed *= FRICTION;
             if (getCenterX() + hSpeed + getRadius() > 800 || getCenterX() + hSpeed - getRadius() < 0) {
                 hSpeed /= -2;
@@ -63,7 +63,7 @@ public class Ball extends Circle {
                 vSpeed /= -2;
             }
             setCenterX(getCenterX() + hSpeed);
-            setCenterY(getCenterY() - vSpeed);
+            setCenterY(getCenterY() + vSpeed);
         }));
         animation.setCycleCount(Timeline.INDEFINITE);
         animation.play();
