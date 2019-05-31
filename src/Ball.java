@@ -1,7 +1,8 @@
+import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 
 public class Ball extends Circle {
-    private final double GRAVITY = .001;
+    private final double GRAVITY = .05;
     private final double FRICTION = .15;
     private double hSpeed;
     private double vSpeed;
@@ -9,9 +10,10 @@ public class Ball extends Circle {
     public Ball(int xPos, int yPos) {
         hSpeed = 0;
         vSpeed = 0;
-        setRadius(10);
+        setRadius(7);
         setCenterX(xPos);
         setCenterY(yPos);
+        setFill(Color.WHITE);
     }
 
     public void jumpLeft() {
@@ -49,11 +51,11 @@ public class Ball extends Circle {
     public void onFrame() {
         vSpeed -= GRAVITY;
         hSpeed -= FRICTION;
-        if (getCenterX() + hSpeed > 900 || getCenterX() + hSpeed < 0) {
+        if (getCenterX() + hSpeed > 800 || getCenterX() + hSpeed < 0) {
             hSpeed /= -2;
         }
 
-        if (getCenterY() + vSpeed > 600 || getCenterX() + vSpeed < 0) {
+        if (getCenterY() + vSpeed > 500 || getCenterX() + vSpeed < 0) {
             vSpeed /= -2;
         }
 
