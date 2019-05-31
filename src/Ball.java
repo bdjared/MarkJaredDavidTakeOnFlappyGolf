@@ -22,10 +22,15 @@ public class Ball extends Circle {
     }
 
     public void jumpLeft() {
-        hSpeed -= 5;
-        vSpeed -= 8;
-        if (vSpeed > 0)
-        gravityJump();
+        if (vSpeed < 0){
+            vSpeed = -8;
+        }
+        else {
+            hSpeed -= 5;
+            vSpeed -= 8;
+            if (vSpeed > 0)
+                gravityJump();
+        }
     }
 
     public void jumpRight() {
