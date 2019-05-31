@@ -23,12 +23,12 @@ public class Ball extends Circle {
 
     public void jumpLeft() {
         hSpeed -= 10;
-        vSpeed += .24;
+        vSpeed += 1;
     }
 
     public void jumpRight() {
         hSpeed += 10;
-        vSpeed += .24;
+        vSpeed += 1;
     }
 
     public double getGravity() {
