@@ -22,29 +22,29 @@ public class Ball extends Circle {
     }
 
     public void jumpLeft() {
-        if (vSpeed > -10 && vSpeed < 0) {
-            vSpeed = -10;
-            hSpeed = -8;
-        }
-        else {
-            vSpeed -= 8;
+        if (vSpeed < 0){
+            vSpeed = -6;
             hSpeed -= 5;
         }
-        if (vSpeed > 0)
-        gravityJump();
+        else {
+            hSpeed -= 5;
+            vSpeed -= 6;
+            if (vSpeed > 0)
+                gravityJump();
+        }
     }
 
     public void jumpRight() {
-        if (vSpeed > -10 && vSpeed < 0) {
-            vSpeed = -10;
-            hSpeed = 8;
-        }
-        else {
-            vSpeed -= 8;
+        if (vSpeed < 0){
+            vSpeed = -6;
             hSpeed += 5;
         }
-        if (vSpeed > 0)
-        gravityJump();
+        else {
+            hSpeed += 5;
+            vSpeed -= 6;
+            if (vSpeed > 0)
+                gravityJump();
+        }
     }
 
     public double getGravity() {
@@ -68,7 +68,7 @@ public class Ball extends Circle {
     }
 
     public void gravityJump(){
-        vSpeed = -5;
+        vSpeed = -6;
     }
 
     public void play() {
