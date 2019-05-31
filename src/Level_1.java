@@ -1,3 +1,4 @@
+import javafx.scene.image.Image;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
@@ -9,6 +10,7 @@ public class Level_1 extends Pane {
     private Rectangle grass = new Rectangle(800, 175);
     private Rectangle leftBttn = new Rectangle(100, 100);
     private Rectangle rightBttn = new Rectangle(100, 100);
+
 
     public Level_1() {
         sky.setFill(Color.LIGHTBLUE);
