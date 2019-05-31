@@ -5,7 +5,7 @@ import javafx.scene.shape.Circle;
 import javafx.util.Duration;
 
 public class Ball extends Circle {
-    private final double GRAVITY = .31;
+    private final double GRAVITY = .32;
     private final double FRICTION = .96;
     private double hSpeed;
     private double vSpeed;
