@@ -13,7 +13,7 @@ public class Level_1 extends Pane {
     public Level_1() {
         sky.setFill(Color.LIGHTBLUE);
 
-        grass.setFill(Color.DARKGREEN);
+        grass.setFill(new Color(0.23529411764f, 0.8525490196f, 0.01176470588f, 1));
         grass.setX(0);
         grass.setY(325);
 
