@@ -5,7 +5,7 @@ import javafx.scene.shape.Circle;
 import javafx.util.Duration;
 
 public class Ball extends Circle {
-    private final double gravity = .5;
+    private final double GRAVITY = .5;
     private final double FRICTION = .98;
     private double hSpeed;
     private double vSpeed;
@@ -55,7 +55,7 @@ public class Ball extends Circle {
 
     public void play() {
         animation = new Timeline(new KeyFrame(Duration.millis(50), e -> {
-            vSpeed += gravity;
+            vSpeed += GRAVITY;
             hSpeed *= FRICTION;
 
             if (getCenterX() + hSpeed + getRadius() > 800 || getCenterX() + hSpeed - getRadius() < 0) {
