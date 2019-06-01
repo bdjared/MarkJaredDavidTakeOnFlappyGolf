@@ -1,4 +1,3 @@
-import javafx.scene.image.Image;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
@@ -19,21 +18,29 @@ public class Level_1 extends Pane {
         grass.setX(0);
         grass.setY(325);
 
-        leftBttn.setFill(new Color(0.5019608f, 0.5019608f, 0.5019608f, 0.4));
-        leftBttn.setX(25);
-        leftBttn.setY(375);
-        leftBttn.setOnMouseClicked(e -> player.jumpLeft());
-
-        rightBttn.setFill(new Color(0.5019608f, 0.5019608f, 0.5019608f, 0.4));
-        rightBttn.setX(675);
-        rightBttn.setY(375);
-        rightBttn.setOnMouseClicked(e -> player.jumpRight());
+        createButtons();
 
         getChildren().addAll(sky, grass, player, leftBttn, rightBttn);
     }
 
     public Ball getPlayer() {
         return player;
+    }
+
+    public void createButtons(){
+        leftBttn.setFill(new Color(0.5019608f, 0.5019608f, 0.5019608f, 0.4));
+        leftBttn.setX(25);
+        leftBttn.setY(375);
+        leftBttn.setOnMouseClicked(e -> player.jumpLeft());
+        leftBttn.setArcHeight(50);
+        leftBttn.setArcWidth(50);
+
+        rightBttn.setFill(new Color(0.5019608f, 0.5019608f, 0.5019608f, 0.4));
+        rightBttn.setX(675);
+        rightBttn.setY(375);
+        rightBttn.setOnMouseClicked(e -> player.jumpRight());
+        rightBttn.setArcHeight(50);
+        rightBttn.setArcWidth(50);
     }
 
     public Rectangle getLeftBttn() {
