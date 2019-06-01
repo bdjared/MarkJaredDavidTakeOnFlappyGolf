@@ -62,7 +62,8 @@ public class Ball extends Circle {
                 hSpeed /= -2;
             }
 
-            if (getCenterY() + vSpeed + getRadius() > 325) {
+            if (getCenterY() + vSpeed + getRadius() > 326) {
+                setCenterY(325 - getRadius());
                 vSpeed /= -4;
             }
             setCenterX(getCenterX() + hSpeed);
