@@ -28,8 +28,9 @@ public class Ball extends Circle {
         }
         else {
             hSpeed -= 3;
-            vSpeed -= 6;
-            if (vSpeed > 0)
+            if (vSpeed < 0)
+                vSpeed -= 6;
+            else
                 gravityJump();
         }
     }
@@ -41,8 +42,9 @@ public class Ball extends Circle {
         }
         else {
             hSpeed += 3;
-            vSpeed -= 6;
-            if (vSpeed > 0)
+            if (vSpeed < 0)
+                vSpeed -= 6;
+            else
                 gravityJump();
         }
     }
@@ -81,7 +83,8 @@ public class Ball extends Circle {
             }
 
             if (getCenterY() + vSpeed + getRadius() > 325 || getCenterY() + vSpeed - getRadius() < 0) {
-                vSpeed /= -2;
+                vSpeed /= -4;
+                Math.floor(vSpeed);
             }
             setCenterX(getCenterX() + hSpeed);
             setCenterY(getCenterY() + vSpeed);
