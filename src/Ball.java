@@ -6,7 +6,7 @@ import javafx.util.Duration;
 
 public class Ball extends Circle {
     private final double gravity = .5;
-    private final double FRICTION = .96;
+    private final double FRICTION = .98;
     private double hSpeed;
     private double vSpeed;
     private Timeline animation;
@@ -49,26 +49,6 @@ public class Ball extends Circle {
         }
     }
 
-    public double getGravity() {
-        return gravity;
-    }
-
-    public double getFriction() {
-        return FRICTION;
-    }
-
-    public double getHSpeed() {
-        return hSpeed;
-    }
-
-    public double getVSpeed() {
-        return vSpeed;
-    }
-
-    public Timeline getAnimation() {
-        return animation;
-    }
-
     public void gravityJump(){
         vSpeed = -6;
     }
@@ -80,9 +60,10 @@ public class Ball extends Circle {
 
             if (getCenterX() + hSpeed + getRadius() > 800 || getCenterX() + hSpeed - getRadius() < 0) {
                 hSpeed /= -2;
+                Math.floor(hSpeed);
             }
 
-            if (getCenterY() + vSpeed + getRadius() > 325 || getCenterY() + vSpeed - getRadius() < 0) {
+            if (getCenterY() + vSpeed + getRadius() > 325) {
                 vSpeed /= -4;
                 Math.floor(vSpeed);
             }
