@@ -17,7 +17,7 @@ public class MainScreen extends Application {
         borderPane.setTop(new CustomPane("Jared, David, and Mark Land"));
         borderPane.setCenter(gridPane);
         borderPane.setBackground(new Background(new BackgroundFill(Color.PALEGOLDENROD, CornerRadii.EMPTY, Insets.EMPTY)));
-//        gridPane.gridLinesVisibleProperty().setValue(Boolean.TRUE);
+        gridPane.gridLinesVisibleProperty().setValue(Boolean.TRUE);
 
         Button level1 = new Button("Level 1");
         level1.setShape(new Circle(350));
