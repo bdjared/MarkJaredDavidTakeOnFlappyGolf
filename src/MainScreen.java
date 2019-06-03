@@ -61,7 +61,7 @@ public class MainScreen extends Application {
 
         level1.setOnMousePressed(e -> {
             Level_1 lvl1 = new Level_1();
-            Scene lvlscene = new Scene(lvl1, 800, 500);
+            Scene lvlscene = new Scene(lvl1, 900, 600);
             lvlscene.setOnKeyPressed(a -> {
                 if (a.getCode() == KeyCode.LEFT)
                     lvl1.getPlayer().jumpLeft();
