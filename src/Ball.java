@@ -5,8 +5,8 @@ import javafx.scene.shape.Circle;
 import javafx.util.Duration;
 
 public class Ball extends Circle {
-    private final double GRAVITY = .5;
-    private final double FRICTION = .98;
+    private final double GRAVITY = .25;
+    private final double FRICTION = .99;
     private double hSpeed;
     private double vSpeed;
     private Timeline animation;
@@ -22,39 +22,39 @@ public class Ball extends Circle {
     }
 
     public void jumpLeft() {
-        if (vSpeed < -2){
+        if (vSpeed < -3){
             vSpeed = -8;
-            hSpeed -= 3;
+            hSpeed -= 2;
         }
         else {
-            hSpeed -= 3;
+            hSpeed -= 2;
             if (vSpeed < 0)
-                vSpeed -= 6;
+                vSpeed -= 5;
             else
                 gravityJump();
         }
     }
 
     public void jumpRight() {
-        if (vSpeed < -2){
+        if (vSpeed < -3){
             vSpeed = -8;
-            hSpeed += 3;
+            hSpeed += 2;
         }
         else {
-            hSpeed += 3;
+            hSpeed += 2;
             if (vSpeed < 0)
-                vSpeed -= 6;
+                vSpeed -= 5;
             else
                 gravityJump();
         }
     }
 
     public void gravityJump(){
-        vSpeed = -6;
+        vSpeed = -5;
     }
 
     public void play() {
-        animation = new Timeline(new KeyFrame(Duration.millis(50), e -> {
+        animation = new Timeline(new KeyFrame(Duration.millis(16.6), e -> {
             vSpeed += GRAVITY;
             hSpeed *= FRICTION;
 
