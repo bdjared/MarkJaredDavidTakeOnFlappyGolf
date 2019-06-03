@@ -17,55 +17,55 @@ public class MainScreen extends Application {
         borderPane.setTop(new CustomPane("Jared, David, and Mark Land"));
         borderPane.setCenter(gridPane);
         borderPane.setBackground(new Background(new BackgroundFill(Color.PALEGOLDENROD, CornerRadii.EMPTY, Insets.EMPTY)));
-
+//        gridPane.gridLinesVisibleProperty().setValue(Boolean.TRUE);
 
         Button level1 = new Button("Level 1");
         level1.setShape(new Circle(350));
         level1.setMaxSize(350, 350);
-        gridPane.add(level1, 0, 0);
+        gridPane.add(level1, 1, 1);
 
         Button level2 = new Button("Level 2");
         level2.setShape(new Circle(15));
         level2.setMaxSize(350,350);
-        gridPane.add(level2, 2, 0);
-
-        Rectangle filler1 = new Rectangle(45, 45);
-        filler1.setFill(Color.PALEGOLDENROD);
-        filler1.setStroke(Color.PALEGOLDENROD);
-        gridPane.add(filler1, 1,0);
-
-        Button level3 = new Button("Level 3");
-        level3.setShape(new Circle(350));
-        level3.setMaxSize(350, 350);
-        gridPane.add(level3, 4, 0);
+        gridPane.add(level2, 3, 1);
 
         Rectangle filler2 = new Rectangle(45, 45);
         filler2.setFill(Color.PALEGOLDENROD);
         filler2.setStroke(Color.PALEGOLDENROD);
-        gridPane.add(filler2, 3, 0);
+        gridPane.add(filler2, 2, 1);
 
+
+        Rectangle filler1 = new Rectangle(1, 50);
+        filler1.setFill(Color.PALEGOLDENROD);
+        filler1.setStroke(Color.PALEGOLDENROD);
+        gridPane.add(filler1, 0,0);
+
+        Button level3 = new Button("Level 3");
+        level3.setShape(new Circle(350));
+        level3.setMaxSize(350, 350);
+        gridPane.add(level3, 4, 1);
 
         Rectangle filler3 = new Rectangle(45, 45);
         filler3.setFill(Color.PALEGOLDENROD);
         filler3.setStroke(Color.PALEGOLDENROD);
-        gridPane.add(filler3, 5,0);
+        gridPane.add(filler3, 5,1);
 
 
         Button level4 = new Button("Level 4");
         level4.setShape(new Circle(350));
         level4.setMaxSize(350, 350);
-        gridPane.add(level4, 6, 0);
+        gridPane.add(level4, 6, 1);
 
         Rectangle filler4 = new Rectangle(45, 45);
         filler4.setFill(Color.PALEGOLDENROD);
         filler4.setStroke(Color.PALEGOLDENROD);
-        gridPane.add(filler4, 7,0);
+        gridPane.add(filler4, 7,1);
 
 
         Button level5 = new Button("Level 5");
         level5.setShape(new Circle(350));
         level5.setMaxSize(350, 350);
-        gridPane.add(level5, 8, 0);
+        gridPane.add(level5, 8, 1);
 
         Scene scene = new Scene(borderPane, 800, 500);
         primaryStage.setTitle("Better Flappy Golf");
