@@ -58,7 +58,7 @@ public class Ball extends Circle {
             vSpeed += GRAVITY;
             hSpeed *= FRICTION;
 
-            if (getCenterX() + hSpeed + getRadius() > 800 || getCenterX() + hSpeed - getRadius() < 0) {
+            if (getCenterX() + hSpeed + getRadius() > 900 || getCenterX() + hSpeed - getRadius() < 0) {
                 hSpeed /= -2;
             }
 
