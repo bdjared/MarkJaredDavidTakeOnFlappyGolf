@@ -24,10 +24,10 @@ public class Ball extends Circle {
     public void jumpLeft() {
         if (vSpeed < -3){
             vSpeed = -8;
-            hSpeed -= 1;
+            hSpeed -= 1.5;
         }
         else {
-            hSpeed -= 1;
+            hSpeed -= 1.5;
             if (vSpeed < 0)
                 vSpeed -= 5;
             else
@@ -38,10 +38,10 @@ public class Ball extends Circle {
     public void jumpRight() {
         if (vSpeed < -3){
             vSpeed = -8;
-            hSpeed += 1;
+            hSpeed += 1.5;
         }
         else {
-            hSpeed += 1;
+            hSpeed += 1.5;
             if (vSpeed < 0)
                 vSpeed -= 5;
             else
