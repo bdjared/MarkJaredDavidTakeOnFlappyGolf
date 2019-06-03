@@ -56,6 +56,17 @@ public class MainScreen extends Application {
         level4.setMaxSize(350, 350);
         gridPane.add(level4, 6, 0);
 
+        Rectangle filler4 = new Rectangle(45, 45);
+        filler4.setFill(Color.PALEGOLDENROD);
+        filler4.setStroke(Color.PALEGOLDENROD);
+        gridPane.add(filler4, 7,0);
+
+
+        Button level5 = new Button("Level 5");
+        level5.setShape(new Circle(350));
+        level5.setMaxSize(350, 350);
+        gridPane.add(level5, 8, 0);
+
         Scene scene = new Scene(borderPane, 800, 500);
         primaryStage.setTitle("Better Flappy Golf");
 
