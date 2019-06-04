@@ -12,7 +12,7 @@ public class Level_1 extends Pane {
     private Rectangle rightBttn = new Rectangle(100, 100);
     private Rectangle hole = new Rectangle(15,10);
     private Ellipse top_hole = new Ellipse(10,7);
-    private Rectangle top_grass = new Rectangle(600, 10);
+    private Rectangle top_grass = new Rectangle(145, 10);
 
 
 
@@ -24,12 +24,14 @@ public class Level_1 extends Pane {
         grass.setY(370);
         hole.setFill(Color.RED);
         top_hole.setFill(Color.BLACK);
-        hole.setX(500);
-        hole.setY(365);
-        top_hole.centerYProperty().setValue(364);
-        top_hole.centerXProperty().setValue(507);
-        top_grass.setX(0);
-        top_grass.setY(365);
+        hole.setX(520);
+        hole.setY(370);
+        top_hole.centerYProperty().setValue(369);
+        top_hole.centerXProperty().setValue(527);
+        top_grass.setX(440);
+        top_grass.setY(370);
+        top_grass.setArcWidth(15);
+        top_grass.setArcHeight(15);
         top_grass.setFill(new Color(0f, 141/255f, 23/255f, 1));
 
         createButtons();
