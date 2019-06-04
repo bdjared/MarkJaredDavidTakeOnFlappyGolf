@@ -1,5 +1,6 @@
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
+import javafx.scene.shape.Ellipse;
 import javafx.scene.shape.Rectangle;
 
 
@@ -9,6 +10,8 @@ public class Level_1 extends Pane {
     private Rectangle grass = new Rectangle(900, 500);
     private Rectangle leftBttn = new Rectangle(100, 100);
     private Rectangle rightBttn = new Rectangle(100, 100);
+    private Rectangle hole = new Rectangle(15,15);
+    private Ellipse top_hole = new Ellipse(10,7);
 
 
     public Level_1() {
@@ -17,10 +20,16 @@ public class Level_1 extends Pane {
         grass.setFill(new Color(0.23529411764f, 0.8525490196f, 0.01176470588f, 1));
         grass.setX(0);
         grass.setY(370);
+        hole.setFill(Color.RED);
+        top_hole.setFill(Color.BLACK);
+        hole.setX(500);
+        hole.setY(370);
+        top_hole.centerYProperty().setValue(371);
+        top_hole.centerXProperty().setValue(505);
 
         createButtons();
 
-        getChildren().addAll(sky, grass, player, leftBttn, rightBttn);
+        getChildren().addAll(sky, grass, player, leftBttn, rightBttn,hole, top_hole);
     }
 
     public Ball getPlayer() {
