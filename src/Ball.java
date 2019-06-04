@@ -22,30 +22,38 @@ public class Ball extends Circle {
     }
 
     public void jumpLeft() {
-        if (vSpeed < -3){
-            vSpeed = -8;
-            hSpeed -= 1.5;
+        if (getCenterX() < 580 || getCenterX() > 580 + 145) {
+            if (vSpeed < -3) {
+                vSpeed = -8;
+                hSpeed -= 1.5;
+            } else {
+                hSpeed -= 1.5;
+                if (vSpeed < 0)
+                    vSpeed -= 5;
+                else
+                    gravityJump();
+            }
         }
-        else {
-            hSpeed -= 1.5;
-            if (vSpeed < 0)
-                vSpeed -= 5;
-            else
-                gravityJump();
+        else{
+            hSpeed -= 1;
         }
     }
 
     public void jumpRight() {
-        if (vSpeed < -3){
-            vSpeed = -8;
-            hSpeed += 1.5;
+        if (getCenterX() < 580 || getCenterX() > 580 + 145) {
+            if (vSpeed < -3) {
+                vSpeed = -8;
+                hSpeed += 1.5;
+            } else {
+                hSpeed += 1.5;
+                if (vSpeed < 0)
+                    vSpeed -= 5;
+                else
+                    gravityJump();
+            }
         }
         else {
-            hSpeed += 1.5;
-            if (vSpeed < 0)
-                vSpeed -= 5;
-            else
-                gravityJump();
+            hSpeed += 1;
         }
     }
 
@@ -58,14 +66,19 @@ public class Ball extends Circle {
             vSpeed += GRAVITY;
             hSpeed *= FRICTION;
 
+            System.out.println(getCenterX());
             if (getCenterX() + hSpeed + getRadius() > 900 || getCenterX() + hSpeed - getRadius() < 0) {
                 hSpeed /= -2;
             }
 
             for (int x = 0; x <= 900; x++) {
-                if (contains(x, lvl.getGrass().getY())) {
+                if (contains(x, lvl.getGrass().getY()) && !(getCenterX() < 672) && !(getCenterX() > 662)) {
                     setCenterY(370 - getRadius());
                     vSpeed /= -4;
+                }
+                else if ((getCenterX() < 672 && getCenterX() > 662) && contains(x, lvl.getGrass().getY() - lvl.getHole().getHeight())) {
+                    setCenterY(380 - getRadius());
+                    vSpeed = 0;
                 }
             }
 
