@@ -10,7 +10,7 @@ public class Level_1 extends Hole {
     private Rectangle leftBttn = new Rectangle(100, 100);
     private Rectangle rightBttn = new Rectangle(100, 100);
     private Rectangle hole = new Rectangle(15,10);
-    private Ellipse top_hole = new Ellipse(10,7);
+    private Ellipse top_hole = new Ellipse(7,4);
     private Rectangle top_grass = new Rectangle(145, 10);
 
 
@@ -21,11 +21,11 @@ public class Level_1 extends Hole {
         grass.setFill(new Color(0.23529411764f, 0.8525490196f, 0.01176470588f, 1));
         grass.setX(0);
         grass.setY(370);
-        hole.setFill(Color.RED);
+        hole.setFill(new Color(0.23529411764f, 0.8525490196f, 0.01176470588f, 1));
         top_hole.setFill(Color.BLACK);
         hole.setX(660);
-        hole.setY(360);
-        top_hole.centerYProperty().setValue(369);
+        hole.setY(370);
+        top_hole.centerYProperty().setValue(374);
         top_hole.centerXProperty().setValue(667);
         top_grass.setX(580);
         top_grass.setY(370);
@@ -35,7 +35,7 @@ public class Level_1 extends Hole {
 
         createButtons();
 
-        getChildren().addAll(sky, player, grass, leftBttn, rightBttn, top_hole, top_grass, hole);
+        getChildren().addAll(sky, player, grass, leftBttn, rightBttn, hole, top_grass, top_hole, player.getWinText());
     }
 
     public Ball getPlayer() {

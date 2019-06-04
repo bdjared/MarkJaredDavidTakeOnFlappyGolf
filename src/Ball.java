@@ -2,6 +2,8 @@ import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
+import javafx.scene.text.Font;
+import javafx.scene.text.Text;
 import javafx.util.Duration;
 
 public class Ball extends Circle {
@@ -10,19 +12,25 @@ public class Ball extends Circle {
     private double hSpeed;
     private double vSpeed;
     private Timeline animation;
+    private Hole lvl;
+    private int score;
+    private Text winText = new Text();
 
-    public Ball(int xPos, int yPos, Hole lvl) {
+    public Ball(int xPos, int yPos, Hole hole) {
         hSpeed = 0;
         vSpeed = 0;
+        score = 0;
+        lvl = hole;
         setRadius(6);
         setCenterX(xPos);
         setCenterY(yPos);
         setFill(Color.WHITE);
-        play(lvl);
+        play();
     }
 
     public void jumpLeft() {
-        if (getCenterX() < 580 || getCenterX() > 580 + 145) {
+        score++;
+        if ((getCenterX() < 580 || getCenterX() > 580 + 145) && getCenterY() < lvl.getGrass().getY() - getRadius()) {
             if (vSpeed < -3) {
                 vSpeed = -8;
                 hSpeed -= 1.5;
@@ -35,12 +43,13 @@ public class Ball extends Circle {
             }
         }
         else{
-            hSpeed -= 1;
+            hSpeed -= .5;
         }
     }
 
     public void jumpRight() {
-        if (getCenterX() < 580 || getCenterX() > 580 + 145) {
+        score++;
+        if ((getCenterX() < 580 || getCenterX() > 580 + 145) && getCenterY() < lvl.getGrass().getY() - getRadius()) {
             if (vSpeed < -3) {
                 vSpeed = -8;
                 hSpeed += 1.5;
@@ -53,7 +62,7 @@ public class Ball extends Circle {
             }
         }
         else {
-            hSpeed += 1;
+            hSpeed += .5;
         }
     }
 
@@ -61,34 +70,60 @@ public class Ball extends Circle {
         vSpeed = -5;
     }
 
-    public void play(Hole lvl) {
-        animation = new Timeline(new KeyFrame(Duration.millis(16.6), e -> {
-            vSpeed += GRAVITY;
-            hSpeed *= FRICTION;
+    public Text getWinText() {
+        return winText;
+    }
 
-            System.out.println(getCenterX());
+    public void play() {
+        animation = new Timeline(new KeyFrame(Duration.millis(16.6), e -> {
+            if (Math.round(getCenterY() + getRadius()) != lvl.getGrass().getY() || (getCenterX() < 670 && getCenterX() > 665)) {
+                vSpeed += GRAVITY;
+            }
+
+            hSpeed *= FRICTION;
+            if (hSpeed < .08 && hSpeed > -.08) {
+                hSpeed = 0;
+            }
+
             if (getCenterX() + hSpeed + getRadius() > 900 || getCenterX() + hSpeed - getRadius() < 0) {
                 hSpeed /= -2;
             }
 
             for (int x = 0; x <= 900; x++) {
-                if (contains(x, lvl.getGrass().getY()) && !(getCenterX() < 672) && !(getCenterX() > 662)) {
+                if (contains(x, lvl.getGrass().getY()) && (getCenterX() > 670 || getCenterX() < 665)) {
                     setCenterY(370 - getRadius());
                     vSpeed /= -4;
                 }
-                else if ((getCenterX() < 672 && getCenterX() > 662) && contains(x, lvl.getGrass().getY() - lvl.getHole().getHeight())) {
-                    setCenterY(380 - getRadius());
-                    vSpeed = 0;
+                else if ((getCenterX() < 670 && getCenterX() > 665) && contains(x, lvl.getGrass().getY() - lvl.getHole().getHeight())) {
+                    vSpeed = 1.5;
+                    setCenterY(getCenterY() + vSpeed);
+                    if (getCenterY() > 385 + getRadius()) {
+                        setCenterY(385 + getRadius());
+                    }
                 }
             }
 
             if (getCenterY() + vSpeed - getRadius() < 0) {
                 vSpeed = 0;
             }
+
+            if (getCenterY() - getRadius() > lvl.getGrass().getY()) {
+                win();
+            }
+
             setCenterX(getCenterX() + hSpeed);
             setCenterY(getCenterY() + vSpeed);
         }));
         animation.setCycleCount(Timeline.INDEFINITE);
         animation.play();
+    }
+
+    private void win() {
+        animation.pause();
+        winText.setText(score + " flaps!");
+        winText.setFill(Color.WHITE);
+        winText.setX(lvl.getWidth() / 3.5);
+        winText.setY(lvl.getHeight() / 2);
+        winText.setFont(new Font("Open Sans", 100));
     }
 }
