@@ -9,9 +9,9 @@ public class Level_1 extends Hole {
     private Rectangle grass = new Rectangle(900, 500);
     private Rectangle leftBttn = new Rectangle(100, 100);
     private Rectangle rightBttn = new Rectangle(100, 100);
-    private Rectangle hole = new Rectangle(15,10);
-    private Ellipse top_hole = new Ellipse(7,4);
-    private Rectangle top_grass = new Rectangle(145, 10);
+    private Rectangle hole_rect = new Rectangle(15,10);
+    private Ellipse hole_oval = new Ellipse(7,3);
+    private Rectangle green = new Rectangle(175, 7);
 
 
 
@@ -21,21 +21,21 @@ public class Level_1 extends Hole {
         grass.setFill(new Color(0.23529411764f, 0.8525490196f, 0.01176470588f, 1));
         grass.setX(0);
         grass.setY(370);
-        hole.setFill(new Color(0.23529411764f, 0.8525490196f, 0.01176470588f, 1));
-        top_hole.setFill(Color.BLACK);
-        hole.setX(660);
-        hole.setY(370);
-        top_hole.centerYProperty().setValue(374);
-        top_hole.centerXProperty().setValue(667);
-        top_grass.setX(580);
-        top_grass.setY(370);
-        top_grass.setArcWidth(15);
-        top_grass.setArcHeight(15);
-        top_grass.setFill(new Color(0f, 141/255f, 23/255f, 1));
+        hole_rect.setFill(new Color(0.23529411764f, 0.8525490196f, 0.01176470588f, 1));
+        hole_oval.setFill(Color.BLACK);
+        hole_rect.setX(660);
+        hole_rect.setY(370);
+        hole_oval.centerYProperty().setValue(373);
+        hole_oval.centerXProperty().setValue(667);
+        green.setX(560);
+        green.setY(370);
+        green.setArcWidth(15);
+        green.setArcHeight(15);
+        green.setFill(new Color(0f, 141/255f, 23/255f, 1));
 
         createButtons();
 
-        getChildren().addAll(sky, player, grass, leftBttn, rightBttn, hole, top_grass, top_hole, player.getWinText());
+        getChildren().addAll(sky, player, grass, hole_rect, green, hole_oval, leftBttn, rightBttn, player.getWinText());
     }
 
     public Ball getPlayer() {
@@ -43,11 +43,15 @@ public class Level_1 extends Hole {
     }
 
     public Rectangle getHole() {
-        return hole;
+        return hole_rect;
     }
 
     public Rectangle getGrass() {
         return grass;
+    }
+
+    public Rectangle getGreen() {
+        return green;
     }
 
     public void createButtons(){

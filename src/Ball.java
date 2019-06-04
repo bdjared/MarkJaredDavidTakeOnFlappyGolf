@@ -30,7 +30,7 @@ public class Ball extends Circle {
 
     public void jumpLeft() {
         score++;
-        if ((getCenterX() < 580 || getCenterX() > 580 + 145) && getCenterY() < lvl.getGrass().getY() - getRadius()) {
+        if ((getCenterX() < lvl.getGreen().getX() || getCenterX() > lvl.getGreen().getX() + lvl.getGreen().getWidth()) || Math.round(getCenterY() + getRadius()) < lvl.getGrass().getY() - 1) {
             if (vSpeed < -3) {
                 vSpeed = -8;
                 hSpeed -= 1.5;
@@ -44,12 +44,13 @@ public class Ball extends Circle {
         }
         else{
             hSpeed -= .5;
+            vSpeed = 0;
         }
     }
 
     public void jumpRight() {
         score++;
-        if ((getCenterX() < 580 || getCenterX() > 580 + 145) && getCenterY() < lvl.getGrass().getY() - getRadius()) {
+        if ((getCenterX() < lvl.getGreen().getX() || getCenterX() > lvl.getGreen().getX() + lvl.getGreen().getWidth()) || Math.round(getCenterY() + getRadius()) < lvl.getGrass().getY() - 1) {
             if (vSpeed < -3) {
                 vSpeed = -8;
                 hSpeed += 1.5;
@@ -63,6 +64,7 @@ public class Ball extends Circle {
         }
         else {
             hSpeed += .5;
+            vSpeed = 0;
         }
     }
 
@@ -76,12 +78,12 @@ public class Ball extends Circle {
 
     public void play() {
         animation = new Timeline(new KeyFrame(Duration.millis(16.6), e -> {
-            if (Math.round(getCenterY() + getRadius()) != lvl.getGrass().getY() || (getCenterX() < 670 && getCenterX() > 665)) {
+            if (Math.round(getCenterY() + getRadius()) != lvl.getGrass().getY() || (getCenterX() < 671 && getCenterX() > 664)) {
                 vSpeed += GRAVITY;
             }
 
             hSpeed *= FRICTION;
-            if (hSpeed < .08 && hSpeed > -.08) {
+            if (hSpeed < .09 && hSpeed > -.09) {
                 hSpeed = 0;
             }
 
@@ -90,16 +92,14 @@ public class Ball extends Circle {
             }
 
             for (int x = 0; x <= 900; x++) {
-                if (contains(x, lvl.getGrass().getY()) && (getCenterX() > 670 || getCenterX() < 665)) {
+                if (contains(x, lvl.getGrass().getY()) && (getCenterX() > 671 || getCenterX() < 664)) {
                     setCenterY(370 - getRadius());
                     vSpeed /= -4;
                 }
-                else if ((getCenterX() < 670 && getCenterX() > 665) && contains(x, lvl.getGrass().getY() - lvl.getHole().getHeight())) {
-                    vSpeed = 1.5;
+                else if ((getCenterX() < 671 && getCenterX() > 664) && contains(x, lvl.getGrass().getY() - lvl.getHole().getHeight())) {
+                    if (vSpeed < 1)
+                        vSpeed = .75;
                     setCenterY(getCenterY() + vSpeed);
-                    if (getCenterY() > 385 + getRadius()) {
-                        setCenterY(385 + getRadius());
-                    }
                 }
             }
 
@@ -107,7 +107,8 @@ public class Ball extends Circle {
                 vSpeed = 0;
             }
 
-            if (getCenterY() - getRadius() > lvl.getGrass().getY()) {
+            if (getCenterY() - getRadius() > lvl.getGrass().getY() - 6) {
+                setFill(Color.TRANSPARENT);
                 win();
             }
 
