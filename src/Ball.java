@@ -11,7 +11,7 @@ public class Ball extends Circle {
     private double vSpeed;
     private Timeline animation;
 
-    public Ball(int xPos, int yPos) {
+    public Ball(int xPos, int yPos, Hole lvl) {
         hSpeed = 0;
         vSpeed = 0;
         setRadius(6);
