@@ -19,6 +19,11 @@ public class MainScreen extends Application {
         borderPane.setBackground(new Background(new BackgroundFill(Color.PALEGOLDENROD, CornerRadii.EMPTY, Insets.EMPTY)));
         gridPane.gridLinesVisibleProperty().setValue(Boolean.TRUE);
 
+        Rectangle filler0 = new Rectangle(45, 45);
+        filler0.setFill(Color.PALEGOLDENROD);
+        filler0.setStroke(Color.PALEGOLDENROD);
+        gridPane.add(filler0, 0, 2);
+
         Button level1 = new Button("Level 1");
         level1.setShape(new Circle(350));
         level1.setMaxSize(350, 350);
