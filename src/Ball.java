@@ -18,7 +18,7 @@ public class Ball extends Circle {
         setCenterX(xPos);
         setCenterY(yPos);
         setFill(Color.WHITE);
-        play();
+        play(lvl);
     }
 
     public void jumpLeft() {
@@ -53,7 +53,7 @@ public class Ball extends Circle {
         vSpeed = -5;
     }
 
-    public void play() {
+    public void play(Hole lvl) {
         animation = new Timeline(new KeyFrame(Duration.millis(16.6), e -> {
             vSpeed += GRAVITY;
             hSpeed *= FRICTION;
@@ -62,9 +62,11 @@ public class Ball extends Circle {
                 hSpeed /= -2;
             }
 
-            if (getCenterY() + vSpeed + getRadius() > 370) {
-                setCenterY(370 - getRadius());
-                vSpeed /= -4;
+            for (int x = 0; x <= 900; x++) {
+                if (contains(x, lvl.getGrass().getY())) {
+                    setCenterY(370 - getRadius());
+                    vSpeed /= -4;
+                }
             }
 
             if (getCenterY() + vSpeed - getRadius() < 0) {

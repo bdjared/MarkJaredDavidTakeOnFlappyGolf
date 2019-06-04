@@ -43,6 +43,10 @@ public class Level_1 extends Hole {
         return player;
     }
 
+    public Rectangle getGrass() {
+        return grass;
+    }
+
     public void createButtons(){
         leftBttn.setFill(new Color(0.5019608f, 0.5019608f, 0.5019608f, 0.4));
         leftBttn.setX(25);
