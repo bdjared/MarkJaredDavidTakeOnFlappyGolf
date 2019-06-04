@@ -24,6 +24,8 @@ public class MainScreen extends Application {
         filler0.setStroke(Color.PALEGOLDENROD);
         gridPane.add(filler0, 0, 2);
 
+        Rectangle filler5 = new Rectangle(45, 45);
+
         Button level1 = new Button("Level 1");
         level1.setShape(new Circle(350));
         level1.setMaxSize(350, 350);
