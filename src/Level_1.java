@@ -10,8 +10,10 @@ public class Level_1 extends Pane {
     private Rectangle grass = new Rectangle(900, 500);
     private Rectangle leftBttn = new Rectangle(100, 100);
     private Rectangle rightBttn = new Rectangle(100, 100);
-    private Rectangle hole = new Rectangle(15,15);
+    private Rectangle hole = new Rectangle(15,10);
     private Ellipse top_hole = new Ellipse(10,7);
+    private Rectangle top_grass = new Rectangle(600, 10);
+
 
 
     public Level_1() {
@@ -23,13 +25,16 @@ public class Level_1 extends Pane {
         hole.setFill(Color.RED);
         top_hole.setFill(Color.BLACK);
         hole.setX(500);
-        hole.setY(370);
-        top_hole.centerYProperty().setValue(371);
-        top_hole.centerXProperty().setValue(505);
+        hole.setY(365);
+        top_hole.centerYProperty().setValue(364);
+        top_hole.centerXProperty().setValue(507);
+        top_grass.setX(0);
+        top_grass.setY(365);
+        top_grass.setFill(new Color(0f, 141/255f, 23/255f, 1));
 
         createButtons();
 
-        getChildren().addAll(sky, grass, player, leftBttn, rightBttn,hole, top_hole);
+        getChildren().addAll(sky, grass, player, leftBttn, rightBttn, top_hole, top_grass, hole);
     }
 
     public Ball getPlayer() {
