@@ -15,15 +15,6 @@ public class Ball extends Circle {
     private double yStart;
     private Timeline animation;
     private Hole lvl;
-
-    public void reset() {
-        this.score = 0;
-        setCenterX(xStart);
-        setCenterY(yStart);
-        textScore.setText(String.format("%f", score));
-        animation.play();
-    }
-
     private int score;
     private Text winText = new Text();
     private Text returnText = new Text();
@@ -112,6 +103,17 @@ public class Ball extends Circle {
     public Text getReturnText() {
         return returnText;
     }
+
+    public void reset() {
+        this.score = 0;
+        setCenterX(xStart);
+        setCenterY(yStart);
+        hSpeed = 0;
+        vSpeed = 0;
+        textScore.setText("" + score);
+        animation.play();
+    }
+
 
     public void play() {
         animation = new Timeline(new KeyFrame(Duration.millis(1000 / 60.0), e -> {
