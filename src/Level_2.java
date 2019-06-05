@@ -1,5 +1,6 @@
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Ellipse;
+import javafx.scene.shape.Polygon;
 import javafx.scene.shape.Rectangle;
 
 public class Level_2 extends Hole{
@@ -11,30 +12,31 @@ public class Level_2 extends Hole{
     private Rectangle holeRect = new Rectangle(15,10);
     private Ellipse holeOval = new Ellipse(7,3);
     private Rectangle green = new Rectangle(175, 7);
+    private Polygon platform = new Polygon(500,200,800,200,650,250);
 
     public Level_2() {
         sky.setFill(Color.LIGHTBLUE);
-
+        platform.setFill(Color.GREY);
         grass.setFill(new Color(0.23529411764f, 0.8525490196f, 0.01176470588f, 1));
         grass.setY(370);
 
-        holeRect.setFill(new Color(0.23529411764f, 0.8525490196f, 0.01176470588f, 1));
-        holeRect.setX(660);
-        holeRect.setY(370);
+        holeRect.setFill(Color.GREY);
+        holeRect.setX(673);
+        holeRect.setY(200);
 
         holeOval.setFill(Color.BLACK);
-        holeOval.centerYProperty().setValue(373);
-        holeOval.centerXProperty().setValue(667);
+        holeOval.centerYProperty().setValue(200);
+        holeOval.centerXProperty().setValue(680);
 
-        green.setX(560);
-        green.setY(370);
+        green.setX(575);
+        green.setY(200);
         green.setArcWidth(15);
         green.setArcHeight(15);
         green.setFill(new Color(0f, 141/255f, 23/255f, 1));
 
         createButtons();
 
-        getChildren().addAll(sky, player, grass, holeRect, green, holeOval, leftBttn, rightBttn, player.getWinText(), player.getReturnText(), player.textScore());
+        getChildren().addAll(sky, player, grass, leftBttn, rightBttn, player.getWinText(), player.getReturnText(), player.textScore(),holeRect, platform,green, holeOval);
     }
 
     public void createButtons(){
