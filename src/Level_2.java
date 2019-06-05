@@ -1,11 +1,12 @@
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Ellipse;
+import javafx.scene.shape.Polygon;
 import javafx.scene.shape.Rectangle;
 
 public class Level_2 extends Hole{
     private Ball player = new Ball(100, 370, this);
     private Rectangle sky = new Rectangle(900, 600);
-    private Rectangle grass = new Rectangle(900, 500);
+    private Polygon grass = new Polygon(0,400,900,400,0,600,900,600);
     private Rectangle leftBttn = new Rectangle(100, 100);
     private Rectangle rightBttn = new Rectangle(100, 100);
     private Rectangle holeRect = new Rectangle(15,10);
@@ -16,8 +17,8 @@ public class Level_2 extends Hole{
         sky.setFill(Color.LIGHTBLUE);
 
         grass.setFill(new Color(0.23529411764f, 0.8525490196f, 0.01176470588f, 1));
-        grass.setX(0);
-        grass.setY(370);
+
+
 
         holeRect.setFill(new Color(0.23529411764f, 0.8525490196f, 0.01176470588f, 1));
         holeRect.setX(660);
@@ -66,7 +67,7 @@ public class Level_2 extends Hole{
         return holeOval;
     }
 
-    public Rectangle getGrass() {
+    public Polygon getGrass() {
         return grass;
     }
 

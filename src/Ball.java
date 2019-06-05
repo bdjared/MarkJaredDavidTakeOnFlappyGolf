@@ -33,7 +33,7 @@ public class Ball extends Circle {
 
     public void jumpLeft() {
         textScore.setText(String.format("%d", ++score));
-        if ((getCenterX() < lvl.getGreen().getX() || getCenterX() > lvl.getGreen().getX() + lvl.getGreen().getWidth()) || Math.round(getCenterY() + getRadius()) < lvl.getGrass().getY() - 1) {
+        if ((getCenterX() < lvl.getGreen().getX() || getCenterX() > lvl.getGreen().getX() + lvl.getGreen().getWidth()) || Math.round(getCenterY() + getRadius()) < lvl.getGrass().get() - 1) {
             if (vSpeed < -3) {
                 vSpeed = -8;
                 hSpeed -= 1.5;
