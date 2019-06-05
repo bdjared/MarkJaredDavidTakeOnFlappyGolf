@@ -15,6 +15,7 @@ public class Ball extends Circle {
     private Hole lvl;
     private int score;
     private Text winText = new Text();
+    private Text textScore = new Text("" + score);
 
     public Ball(int xPos, int yPos, Hole hole) {
         hSpeed = 0;
@@ -29,7 +30,7 @@ public class Ball extends Circle {
     }
 
     public void jumpLeft() {
-        score++;
+        textScore.setText(" " + ++score);
         if ((getCenterX() < lvl.getGreen().getX() || getCenterX() > lvl.getGreen().getX() + lvl.getGreen().getWidth()) || Math.round(getCenterY() + getRadius()) < lvl.getGrass().getY() - 1) {
             if (vSpeed < -3) {
                 vSpeed = -8;
@@ -49,7 +50,7 @@ public class Ball extends Circle {
     }
 
     public void jumpRight() {
-        score++;
+        textScore.setText(" " + ++score);
         if ((getCenterX() < lvl.getGreen().getX() || getCenterX() > lvl.getGreen().getX() + lvl.getGreen().getWidth()) || Math.round(getCenterY() + getRadius()) < lvl.getGrass().getY() - 1) {
             if (vSpeed < -3) {
                 vSpeed = -8;
@@ -66,6 +67,24 @@ public class Ball extends Circle {
             hSpeed += .5;
             vSpeed = 0;
         }
+    }
+
+    public int numSize() {
+        int scoreCopy = score;
+        int length = 1;
+        while (scoreCopy > 10) {
+            scoreCopy /= 10;
+            length++;
+        }
+        return length * 8;
+    }
+
+    public Text textScore() {
+        textScore.setFont(new Font(10));
+        textScore.xProperty().bind(centerXProperty().subtract(numSize()));
+        textScore.yProperty().bind(centerYProperty().subtract(10));
+        textScore.setFill(Color.WHITE);
+        return textScore;
     }
 
     public void gravityJump(){
@@ -109,6 +128,7 @@ public class Ball extends Circle {
 
             if (getCenterY() - getRadius() > lvl.getGrass().getY() - 6) {
                 setFill(Color.TRANSPARENT);
+                textScore.setFill(Color.TRANSPARENT);
                 win();
             }
 
@@ -125,6 +145,6 @@ public class Ball extends Circle {
         winText.setFill(Color.WHITE);
         winText.setX(lvl.getWidth() / 3.5);
         winText.setY(lvl.getHeight() / 2);
-        winText.setFont(new Font("Open Sans", 100));
+        winText.setFont(new Font(100));
     }
 }
