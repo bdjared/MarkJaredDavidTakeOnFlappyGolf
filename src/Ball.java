@@ -96,8 +96,8 @@ public class Ball extends Circle {
     }
 
     public void play() {
-        animation = new Timeline(new KeyFrame(Duration.millis(16.6), e -> {
-            if (Math.round(getCenterY() + getRadius()) != lvl.getGrass().getY() || (getCenterX() < 671 && getCenterX() > 664)) {
+        animation = new Timeline(new KeyFrame(Duration.millis(1000 / 60.0), e -> {
+            if (Math.round(getCenterY() + getRadius()) != lvl.getGrass().getY() || (getCenterX() < lvl.getHoleOval().getCenterX() + (lvl.getHoleOval().getRadiusX() / 2) && getCenterX() > lvl.getHoleOval().getCenterX() - (lvl.getHoleOval().getRadiusX() / 2))) {
                 vSpeed += GRAVITY;
             }
 
@@ -105,23 +105,24 @@ public class Ball extends Circle {
                 hSpeed *= FRICTION;
             }
             else{
-                hSpeed *= .97;
+                hSpeed *= .975;
             }
 
-            if (hSpeed < .09 && hSpeed > -.09) {
+            if (hSpeed < .08 && hSpeed > -.08) {
                 hSpeed = 0;
             }
 
-            if (getCenterX() + hSpeed + getRadius() > 900 || getCenterX() + hSpeed - getRadius() < 0) {
+            if (getCenterX() + hSpeed + getRadius() > lvl.getWidth() || getCenterX() + hSpeed - getRadius() < 0) {
                 hSpeed /= -2;
             }
 
-            for (int x = 0; x <= 900; x++) {
-                if (contains(x, lvl.getGrass().getY()) && (getCenterX() > 671 || getCenterX() < 664)) {
-                    setCenterY(370 - getRadius());
+            for (int x = 0; x <= lvl.getWidth(); x++) {
+                if (contains(x, lvl.getGrass().getY()) && (getCenterX() > lvl.getHoleOval().getCenterX() + (lvl.getHoleOval().getRadiusX() / 2) || getCenterX() < lvl.getHoleOval().getCenterX() - (lvl.getHoleOval().getRadiusX() / 2))) {
+                    setCenterY(lvl.getGrass().getY() - getRadius());
                     vSpeed /= -4;
                 }
-                else if ((getCenterX() < 671 && getCenterX() > 664) && contains(x, lvl.getGrass().getY() - lvl.getHole().getHeight())) {
+                else if ((getCenterX() < lvl.getHoleOval().getCenterX() + (lvl.getHoleOval().getRadiusX() / 2) && getCenterX() > lvl.getHoleOval().getCenterX() - (lvl.getHoleOval().getRadiusX() / 2) && contains(x, lvl.getGrass().getY() - lvl.getHoleRect().getHeight()))) {
+                    toFront();
                     if (vSpeed < 1)
                         vSpeed = .75;
                     setCenterY(getCenterY() + vSpeed);
@@ -132,7 +133,7 @@ public class Ball extends Circle {
                 vSpeed = 0;
             }
 
-            if (getCenterY() - getRadius() > lvl.getGrass().getY() - 6) {
+            if (getCenterY() - getRadius() > lvl.getGrass().getY() - getRadius()) {
                 setFill(Color.TRANSPARENT);
                 textScore.setFill(Color.TRANSPARENT);
                 win();

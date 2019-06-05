@@ -8,8 +8,8 @@ public class Level_1 extends Hole {
     private Rectangle grass = new Rectangle(900, 500);
     private Rectangle leftBttn = new Rectangle(100, 100);
     private Rectangle rightBttn = new Rectangle(100, 100);
-    private Rectangle hole_rect = new Rectangle(15,10);
-    private Ellipse hole_oval = new Ellipse(7,3);
+    private Rectangle holeRect = new Rectangle(15,10);
+    private Ellipse holeOval = new Ellipse(7,3);
     private Rectangle green = new Rectangle(175, 7);
 
     public Level_1() {
@@ -18,12 +18,15 @@ public class Level_1 extends Hole {
         grass.setFill(new Color(0.23529411764f, 0.8525490196f, 0.01176470588f, 1));
         grass.setX(0);
         grass.setY(370);
-        hole_rect.setFill(new Color(0.23529411764f, 0.8525490196f, 0.01176470588f, 1));
-        hole_oval.setFill(Color.BLACK);
-        hole_rect.setX(660);
-        hole_rect.setY(370);
-        hole_oval.centerYProperty().setValue(373);
-        hole_oval.centerXProperty().setValue(667);
+
+        holeRect.setFill(new Color(0.23529411764f, 0.8525490196f, 0.01176470588f, 1));
+        holeRect.setX(660);
+        holeRect.setY(370);
+
+        holeOval.setFill(Color.BLACK);
+        holeOval.centerYProperty().setValue(373);
+        holeOval.centerXProperty().setValue(667);
+
         green.setX(560);
         green.setY(370);
         green.setArcWidth(15);
@@ -32,7 +35,7 @@ public class Level_1 extends Hole {
 
         createButtons();
 
-        getChildren().addAll(sky, player, grass, hole_rect, green, hole_oval, leftBttn, rightBttn, player.getWinText(), player.textScore());
+        getChildren().addAll(sky, player, grass, holeRect, green, holeOval, leftBttn, rightBttn, player.getWinText(), player.textScore());
     }
 
     public void createButtons(){
@@ -55,8 +58,12 @@ public class Level_1 extends Hole {
         return player;
     }
 
-    public Rectangle getHole() {
-        return hole_rect;
+    public Rectangle getHoleRect() {
+        return holeRect;
+    }
+
+    public Ellipse getHoleOval() {
+        return holeOval;
     }
 
     public Rectangle getGrass() {
