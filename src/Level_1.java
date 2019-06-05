@@ -35,7 +35,7 @@ public class Level_1 extends Hole {
 
         createButtons();
 
-        getChildren().addAll(sky, player, grass, holeRect, green, holeOval, leftBttn, rightBttn, player.getWinText(), player.textScore());
+        getChildren().addAll(sky, player, grass, holeRect, green, holeOval, leftBttn, rightBttn, player.getWinText(), player.getReturnText(), player.textScore());
     }
 
     public void createButtons(){

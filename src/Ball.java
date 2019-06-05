@@ -1,5 +1,6 @@
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
+import javafx.scene.control.Button;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.text.Font;
@@ -15,6 +16,7 @@ public class Ball extends Circle {
     private Hole lvl;
     private int score;
     private Text winText = new Text();
+    private Text returnText = new Text();
     private Text textScore = new Text(String.format("%d", score));
 
     public Ball(int xPos, int yPos, Hole hole) {
@@ -95,6 +97,10 @@ public class Ball extends Circle {
         return winText;
     }
 
+    public Text getReturnText() {
+        return returnText;
+    }
+
     public void play() {
         animation = new Timeline(new KeyFrame(Duration.millis(1000 / 60.0), e -> {
             if (Math.round(getCenterY() + getRadius()) != lvl.getGrass().getY() || (getCenterX() < lvl.getHoleOval().getCenterX() + (lvl.getHoleOval().getRadiusX() / 2) && getCenterX() > lvl.getHoleOval().getCenterX() - (lvl.getHoleOval().getRadiusX() / 2))) {
@@ -153,5 +159,10 @@ public class Ball extends Circle {
         winText.setX(lvl.getWidth() / 3.5);
         winText.setY(lvl.getHeight() / 2);
         winText.setFont(new Font(100));
+        returnText.setText("Press 'ESC' to return to the main screen.");
+        returnText.setFill(Color.DIMGRAY);
+        returnText.setX(lvl.getWidth() / 4.1);
+        returnText.setY(lvl.getHeight()/ 1.5);
+        returnText.setFont(new Font(25));
     }
 }
