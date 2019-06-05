@@ -69,6 +69,10 @@ public class Ball extends Circle {
         }
     }
 
+    public void gravityJump() {
+        vSpeed = -5;
+    }
+
     public int numSize() {
         int scoreCopy = score;
         int length = 1;
@@ -85,10 +89,6 @@ public class Ball extends Circle {
         textScore.yProperty().bind(centerYProperty().subtract(10));
         textScore.setFill(Color.WHITE);
         return textScore;
-    }
-
-    public void gravityJump(){
-        vSpeed = -5;
     }
 
     public Text getWinText() {
