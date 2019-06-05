@@ -34,39 +34,39 @@ public class MainScreen extends Application {
 //        filler6.setStroke(Color.PALEGOLDENROD);
 //        gridPane.add(filler6, 0, 4);
 
-        Circle level1 = new Circle(25);
+        Circle level1 = new Circle(35);
         level1.setCenterX(50);
         level1.setCenterY(100);
 
-        Circle level2 = new Circle(25);
+        Circle level2 = new Circle(35);
         level2.setCenterX(250);
         level2.setCenterY(100);
 
-        Circle level3 = new Circle(25);
+        Circle level3 = new Circle(35);
         level3.setCenterX(450);
         level3.setCenterY(100);
 
-        Circle level4 = new Circle(25);
+        Circle level4 = new Circle(35);
         level4.setCenterX(650);
         level4.setCenterY(100);
 
-        Circle level5 = new Circle(25);
+        Circle level5 = new Circle(35);
         level5.setCenterX(850);
         level5.setCenterY(100);
 
-        Circle level6 = new Circle(25);
+        Circle level6 = new Circle(35);
         level6.setCenterX(100);
         level6.setCenterY(300);
 
-        Circle level7 = new Circle(25);
+        Circle level7 = new Circle(35);
         level7.setCenterX(350);
         level7.setCenterY(300);
 
-        Circle level8 = new Circle(25);
+        Circle level8 = new Circle(35);
         level8.setCenterX(575);
         level8.setCenterY(300);
 
-        Circle level9 = new Circle(25);
+        Circle level9 = new Circle(35);
         level9.setCenterX(800);
         level9.setCenterY(300);
 //        level1.setShape(new Circle(350));
