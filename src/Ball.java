@@ -122,7 +122,7 @@ public class Ball extends Circle {
             }
 
             System.out.println(!getBoundsInParent().intersects(lvl.getGrass().getBoundsInParent()));
-            System.out.println("\t" + (Math.round(getCenterY() + getRadius()) < lvl.getGrassY() - 1));
+
             if (Math.round(getCenterY() + getRadius()) < lvl.getGrassY() - 1) {
                 hSpeed *= FRICTION;
             }
