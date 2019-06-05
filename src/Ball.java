@@ -1,6 +1,5 @@
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
-import javafx.scene.control.Button;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.text.Font;
@@ -12,18 +11,31 @@ public class Ball extends Circle {
     private final double FRICTION = .99;
     private double hSpeed;
     private double vSpeed;
+    private double xStart;
+    private double yStart;
     private Timeline animation;
     private Hole lvl;
+
+    public void reset() {
+        this.score = 0;
+        setCenterX(xStart);
+        setCenterY(yStart);
+        textScore.setText(String.format("%f", score));
+        animation.play();
+    }
+
     private int score;
     private Text winText = new Text();
     private Text returnText = new Text();
-    private Text textScore = new Text(String.format("%d", score));
+    private Text textScore = new Text("" + score);
 
-    public Ball(int xPos, int yPos, Hole hole) {
+    public Ball(double xPos, double yPos, Hole hole) {
         hSpeed = 0;
         vSpeed = 0;
         score = 0;
         lvl = hole;
+        xStart= xPos;
+        yStart = yPos;
         setRadius(6);
         setCenterX(xPos);
         setCenterY(yPos);
@@ -32,7 +44,7 @@ public class Ball extends Circle {
     }
 
     public void jumpLeft() {
-        textScore.setText(String.format("%d", ++score));
+        textScore.setText("" + ++score);
         if ((getCenterX() < lvl.getGreen().getX() || getCenterX() > lvl.getGreen().getX() + lvl.getGreen().getWidth()) || Math.round(getCenterY() + getRadius()) < lvl.getGrass().getY() - 1) {
             if (vSpeed < -3) {
                 vSpeed = -8;
@@ -52,7 +64,7 @@ public class Ball extends Circle {
     }
 
     public void jumpRight() {
-        textScore.setText(String.format("%d", ++score));
+        textScore.setText("" + ++score);
         if ((getCenterX() < lvl.getGreen().getX() || getCenterX() > lvl.getGreen().getX() + lvl.getGreen().getWidth()) || Math.round(getCenterY() + getRadius()) < lvl.getGrass().getY() - 1) {
             if (vSpeed < -3) {
                 vSpeed = -8;

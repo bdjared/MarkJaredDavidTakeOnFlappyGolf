@@ -136,11 +136,17 @@ public class MainScreen extends Application {
                     primaryStage.show();
                     primaryStage.requestFocus();
                 }
+                if (a.getCode() == KeyCode.R){
+                    lvl1.getPlayer().reset();
+
+                }
             });
             primaryStage.setScene(lvlScene);
             primaryStage.show();
             primaryStage.requestFocus();
         });
+
+
 
         level2.setOnMousePressed(e -> {
             Level_2 lvl2 = new Level_2();
@@ -150,10 +156,13 @@ public class MainScreen extends Application {
                     lvl2.getPlayer().jumpLeft();
                 else if (a.getCode() == KeyCode.RIGHT)
                     lvl2.getPlayer().jumpRight();
+
+                if (a.getCode() == KeyCode.R)
+
+
+
                 if (a.getCode() == KeyCode.ESCAPE) {
-                    primaryStage.setScene(scene);
-                    primaryStage.show();
-                    primaryStage.requestFocus();
+
                 }
             });
             primaryStage.setScene(lvlScene);
