@@ -16,7 +16,7 @@ public class MainScreen extends Application {
         Pane pane = new Pane();
         borderPane.setTop(new CustomPane("Jared, David, and Mark Land"));
         borderPane.setCenter(pane);
-        borderPane.setBackground(new Background(new BackgroundFill(Color.DEEPSKYBLUE, CornerRadii.EMPTY, Insets.EMPTY)));
+        borderPane.setBackground(new Background(new BackgroundFill(Color.LIGHTBLUE, CornerRadii.EMPTY, Insets.EMPTY)));
 
         Circle level1 = new Circle(35);
         level1.setCenterX(50);
