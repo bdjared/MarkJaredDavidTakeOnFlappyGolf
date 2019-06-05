@@ -2,7 +2,6 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Ellipse;
 import javafx.scene.shape.Rectangle;
 
-
 public class Level_1 extends Hole {
     private Ball player = new Ball(100, 370, this);
     private Rectangle sky = new Rectangle(900, 600);
@@ -12,8 +11,6 @@ public class Level_1 extends Hole {
     private Rectangle hole_rect = new Rectangle(15,10);
     private Ellipse hole_oval = new Ellipse(7,3);
     private Rectangle green = new Rectangle(175, 7);
-
-
 
     public Level_1() {
         sky.setFill(Color.LIGHTBLUE);
@@ -38,22 +35,6 @@ public class Level_1 extends Hole {
         getChildren().addAll(sky, player, grass, hole_rect, green, hole_oval, leftBttn, rightBttn, player.getWinText(), player.textScore());
     }
 
-    public Ball getPlayer() {
-        return player;
-    }
-
-    public Rectangle getHole() {
-        return hole_rect;
-    }
-
-    public Rectangle getGrass() {
-        return grass;
-    }
-
-    public Rectangle getGreen() {
-        return green;
-    }
-
     public void createButtons(){
         leftBttn.setFill(new Color(0.5019608f, 0.5019608f, 0.5019608f, 0.4));
         leftBttn.setX(25);
@@ -70,11 +51,19 @@ public class Level_1 extends Hole {
         rightBttn.setArcWidth(50);
     }
 
-    public Rectangle getLeftBttn() {
-        return leftBttn;
+    public Ball getPlayer() {
+        return player;
     }
 
-    public Rectangle getRightBttn() {
-        return rightBttn;
+    public Rectangle getHole() {
+        return hole_rect;
+    }
+
+    public Rectangle getGrass() {
+        return grass;
+    }
+
+    public Rectangle getGreen() {
+        return green;
     }
 }
