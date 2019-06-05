@@ -38,14 +38,14 @@ public class Level_1 extends Hole {
     public void createButtons(){
         leftBttn.setFill(new Color(0.5019608f, 0.5019608f, 0.5019608f, 0.4));
         leftBttn.setX(25);
-        leftBttn.setY(425);
+        leftBttn.setY(475);
         leftBttn.setOnMouseClicked(e -> player.jumpLeft());
         leftBttn.setArcHeight(50);
         leftBttn.setArcWidth(50);
 
         rightBttn.setFill(new Color(0.5019608f, 0.5019608f, 0.5019608f, 0.4));
         rightBttn.setX(775);
-        rightBttn.setY(425);
+        rightBttn.setY(475);
         rightBttn.setOnMouseClicked(e -> player.jumpRight());
         rightBttn.setArcHeight(50);
         rightBttn.setArcWidth(50);
