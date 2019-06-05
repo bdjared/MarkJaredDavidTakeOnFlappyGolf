@@ -28,48 +28,40 @@ public class MainScreen extends Application {
         level2.setCenterY(100);
         level2.setStroke(Color.WHITE);
 
-
         Circle level3 = new Circle(35);
         level3.setCenterX(450);
         level3.setCenterY(100);
         level3.setStroke(Color.WHITE);
-
 
         Circle level4 = new Circle(35);
         level4.setCenterX(650);
         level4.setCenterY(100);
         level4.setStroke(Color.WHITE);
 
-
         Circle level5 = new Circle(35);
         level5.setCenterX(850);
         level5.setCenterY(100);
         level5.setStroke(Color.WHITE);
-
 
         Circle level6 = new Circle(35);
         level6.setCenterX(100);
         level6.setCenterY(300);
         level6.setStroke(Color.WHITE);
 
-
         Circle level7 = new Circle(35);
         level7.setCenterX(350);
         level7.setCenterY(300);
         level7.setStroke(Color.WHITE);
-
 
         Circle level8 = new Circle(35);
         level8.setCenterX(575);
         level8.setCenterY(300);
         level8.setStroke(Color.WHITE);
 
-
         Circle level9 = new Circle(35);
         level9.setCenterX(800);
         level9.setCenterY(300);
         level9.setStroke(Color.WHITE);
-
 
         pane.getChildren().addAll(level1, level2, level3, level4, level5, level6, level7, level8, level9);
 
@@ -164,30 +156,6 @@ public class MainScreen extends Application {
                 }
                 if (a.getCode() == KeyCode.R){
                     lvl1.getPlayer().reset();
-                }
-            });
-            primaryStage.setScene(lvlScene);
-            primaryStage.show();
-            primaryStage.requestFocus();
-        });
-
-        level2.setOnMousePressed(e -> {
-            Level_2 lvl2 = new Level_2();
-            Scene lvlScene = new Scene(lvl2, 900, 600);
-            lvlScene.setOnKeyPressed(a -> {
-                if (a.getCode() == KeyCode.LEFT)
-                    lvl2.getPlayer().jumpLeft();
-                else if (a.getCode() == KeyCode.RIGHT)
-                    lvl2.getPlayer().jumpRight();
-
-                if (a.getCode() == KeyCode.R) {
-                    lvl2.getPlayer().reset();
-                }
-
-                if (a.getCode() == KeyCode.ESCAPE) {
-                    primaryStage.setScene(scene);
-                    primaryStage.show();
-                    primaryStage.requestFocus();
                 }
             });
             primaryStage.setScene(lvlScene);

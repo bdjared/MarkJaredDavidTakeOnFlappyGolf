@@ -4,9 +4,9 @@ import javafx.scene.shape.Rectangle;
 import javafx.scene.shape.Rectangle;
 
 public class Level_1 extends Hole {
-    private Ball player = new Ball(100, 370, this);
+    private Ball player = new Ball(100, 358, this);
     private Rectangle sky = new Rectangle(900, 600);
-    private Rectangle grass = new Rectangle(900, 500);
+    private Rectangle grass = new Rectangle(912, 510);
     private Rectangle leftBttn = new Rectangle(100, 100);
     private Rectangle rightBttn = new Rectangle(100, 100);
     private Rectangle holeRect = new Rectangle(15,10);
@@ -17,7 +17,10 @@ public class Level_1 extends Hole {
         sky.setFill(Color.LIGHTBLUE);
 
         grass.setFill(new Color(0.23529411764f, 0.8525490196f, 0.01176470588f, 1));
-        grass.setY(370);
+        grass.setY(364);
+        grass.setX(-6);
+        grass.setStrokeWidth(12);
+        grass.setStroke(Color.LIGHTBLUE);
 
         holeRect.setFill(new Color(0.23529411764f, 0.8525490196f, 0.01176470588f, 1));
         holeRect.setX(660);
@@ -35,7 +38,7 @@ public class Level_1 extends Hole {
 
         createButtons();
 
-        getChildren().addAll(sky, player, grass, holeRect, green, holeOval, leftBttn, rightBttn, player.getWinText(), player.getReturnText(), player.textScore());
+        getChildren().addAll(sky, grass, holeRect, green, holeOval, player, leftBttn, rightBttn, player.getWinText(), player.getReturnText(), player.textScore());
     }
 
     public void createButtons(){
@@ -72,5 +75,9 @@ public class Level_1 extends Hole {
 
     public Rectangle getGreen() {
         return green;
+    }
+
+    public double getGrassY() {
+        return grass.getY() + 6;
     }
 }

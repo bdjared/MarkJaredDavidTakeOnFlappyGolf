@@ -11,4 +11,6 @@ public abstract class Hole extends Pane {
     public abstract Rectangle getGrass();
 
     public abstract Rectangle getHoleRect();
+
+    public abstract double getGrassY();
 }

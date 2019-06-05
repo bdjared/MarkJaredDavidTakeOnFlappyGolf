@@ -36,7 +36,7 @@ public class Ball extends Circle {
 
     public void jumpLeft() {
         textScore.setText("" + ++score);
-        if ((getCenterX() < lvl.getGreen().getX() || getCenterX() > lvl.getGreen().getX() + lvl.getGreen().getWidth()) || Math.round(getCenterY() + getRadius()) < lvl.getGrass().getY() - 1) {
+        if ((getCenterX() < lvl.getGreen().getX() || getCenterX() > lvl.getGreen().getX() + lvl.getGreen().getWidth()) || !getBoundsInParent().intersects(lvl.getGrass().getBoundsInParent())) {
             if (vSpeed < -3) {
                 vSpeed = -8;
                 hSpeed -= 1.5;
@@ -56,7 +56,7 @@ public class Ball extends Circle {
 
     public void jumpRight() {
         textScore.setText("" + ++score);
-        if ((getCenterX() < lvl.getGreen().getX() || getCenterX() > lvl.getGreen().getX() + lvl.getGreen().getWidth()) || Math.round(getCenterY() + getRadius()) < lvl.getGrass().getY() - 1) {
+        if ((getCenterX() < lvl.getGreen().getX() || getCenterX() > lvl.getGreen().getX() + lvl.getGreen().getWidth()) || !getBoundsInParent().intersects(lvl.getGrass().getBoundsInParent())) {
             if (vSpeed < -3) {
                 vSpeed = -8;
                 hSpeed += 1.5;
@@ -117,11 +117,13 @@ public class Ball extends Circle {
 
     public void play() {
         animation = new Timeline(new KeyFrame(Duration.millis(1000 / 60.0), e -> {
-            if (Math.round(getCenterY() + getRadius()) != lvl.getGrass().getY() || (getCenterX() < lvl.getHoleOval().getCenterX() + (lvl.getHoleOval().getRadiusX() / 2) && getCenterX() > lvl.getHoleOval().getCenterX() - (lvl.getHoleOval().getRadiusX() / 2))) {
+            if (Math.round(getCenterY() + getRadius()) != lvl.getGrassY() || (getCenterX() < lvl.getHoleOval().getCenterX() + (lvl.getHoleOval().getRadiusX() / 2) && getCenterX() > lvl.getHoleOval().getCenterX() - (lvl.getHoleOval().getRadiusX() / 2))) {
                 vSpeed += GRAVITY;
             }
 
-            if (Math.round(getCenterY() + getRadius()) < lvl.getGrass().getY() - 1) {
+            System.out.println(!getBoundsInParent().intersects(lvl.getGrass().getBoundsInParent()));
+            System.out.println("\t" + (Math.round(getCenterY() + getRadius()) < lvl.getGrassY() - 1));
+            if (Math.round(getCenterY() + getRadius()) < lvl.getGrassY() - 1) {
                 hSpeed *= FRICTION;
             }
             else{
@@ -137,11 +139,11 @@ public class Ball extends Circle {
             }
 
             for (int x = 0; x <= lvl.getWidth(); x++) {
-                if (contains(x, lvl.getGrass().getY()) && (getCenterX() > lvl.getHoleOval().getCenterX() + (lvl.getHoleOval().getRadiusX() / 2) || getCenterX() < lvl.getHoleOval().getCenterX() - (lvl.getHoleOval().getRadiusX() / 2))) {
-                    setCenterY(lvl.getGrass().getY() - getRadius());
-                    vSpeed /= -4;
+                if (contains(x, lvl.getGrassY()) && (getCenterX() > lvl.getHoleOval().getCenterX() + (lvl.getHoleOval().getRadiusX() / 2) || getCenterX() < lvl.getHoleOval().getCenterX() - (lvl.getHoleOval().getRadiusX() / 2))) {
+                    setCenterY(lvl.getGrassY() - getRadius());
+                    vSpeed /= -3;
                 }
-                else if ((getCenterX() < lvl.getHoleOval().getCenterX() + (lvl.getHoleOval().getRadiusX() / 2) && getCenterX() > lvl.getHoleOval().getCenterX() - (lvl.getHoleOval().getRadiusX() / 2) && contains(x, lvl.getGrass().getY() - lvl.getHoleRect().getHeight()))) {
+                else if ((getCenterX() < lvl.getHoleOval().getCenterX() + (lvl.getHoleOval().getRadiusX() / 2) && getCenterX() > lvl.getHoleOval().getCenterX() - (lvl.getHoleOval().getRadiusX() / 2) && contains(x, lvl.getGrassY() - lvl.getHoleRect().getHeight()))) {
                     toFront();
                     if (vSpeed < 1)
                         vSpeed = .75;
@@ -153,7 +155,7 @@ public class Ball extends Circle {
                 vSpeed = 0;
             }
 
-            if (getCenterY() - getRadius() > lvl.getGrass().getY() - getRadius()) {
+            if (getCenterY() - getRadius() > lvl.getGrassY() - getRadius()) {
                 setFill(Color.TRANSPARENT);
                 textScore.setFill(Color.TRANSPARENT);
                 win();
