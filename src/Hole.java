@@ -4,10 +4,6 @@ import javafx.scene.shape.Polygon;
 import javafx.scene.shape.Rectangle;
 
 public abstract class Hole extends Pane {
-    private Rectangle grass;
-    private Rectangle holeRect;
-    private Rectangle green;
-    private Ellipse holeOval;
 
     public abstract Ellipse getHoleOval();
 
