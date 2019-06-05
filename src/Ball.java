@@ -15,7 +15,7 @@ public class Ball extends Circle {
     private Hole lvl;
     private int score;
     private Text winText = new Text();
-    private Text textScore = new Text("" + score);
+    private Text textScore = new Text(String.format("%d", score));
 
     public Ball(int xPos, int yPos, Hole hole) {
         hSpeed = 0;
@@ -30,7 +30,7 @@ public class Ball extends Circle {
     }
 
     public void jumpLeft() {
-        textScore.setText(" " + ++score);
+        textScore.setText(String.format("%d", ++score));
         if ((getCenterX() < lvl.getGreen().getX() || getCenterX() > lvl.getGreen().getX() + lvl.getGreen().getWidth()) || Math.round(getCenterY() + getRadius()) < lvl.getGrass().getY() - 1) {
             if (vSpeed < -3) {
                 vSpeed = -8;
@@ -44,13 +44,13 @@ public class Ball extends Circle {
             }
         }
         else{
-            hSpeed -= .5;
+            hSpeed -= 1.5;
             vSpeed = 0;
         }
     }
 
     public void jumpRight() {
-        textScore.setText(" " + ++score);
+        textScore.setText(String.format("%d", ++score));
         if ((getCenterX() < lvl.getGreen().getX() || getCenterX() > lvl.getGreen().getX() + lvl.getGreen().getWidth()) || Math.round(getCenterY() + getRadius()) < lvl.getGrass().getY() - 1) {
             if (vSpeed < -3) {
                 vSpeed = -8;
@@ -64,7 +64,7 @@ public class Ball extends Circle {
             }
         }
         else {
-            hSpeed += .5;
+            hSpeed += 1.5;
             vSpeed = 0;
         }
     }
@@ -75,7 +75,7 @@ public class Ball extends Circle {
 
     public int numSize() {
         int scoreCopy = score;
-        int length = 1;
+        int length = 0;
         while (scoreCopy > 10) {
             scoreCopy /= 10;
             length++;
@@ -101,7 +101,13 @@ public class Ball extends Circle {
                 vSpeed += GRAVITY;
             }
 
-            hSpeed *= FRICTION;
+            if (Math.round(getCenterY() + getRadius()) < lvl.getGrass().getY() - 1) {
+                hSpeed *= FRICTION;
+            }
+            else{
+                hSpeed *= .97;
+            }
+
             if (hSpeed < .09 && hSpeed > -.09) {
                 hSpeed = 0;
             }
