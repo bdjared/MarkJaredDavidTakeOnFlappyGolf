@@ -27,7 +27,7 @@ public class Ball extends Circle {
         lvl = hole;
         xStart= xPos;
         yStart = yPos;
-        setRadius(6);
+        setRadius(60);
         setCenterX(xPos);
         setCenterY(yPos);
         setFill(Color.WHITE);
@@ -121,13 +121,13 @@ public class Ball extends Circle {
 
     public void play() {
         animation = new Timeline(new KeyFrame(Duration.millis(1000 / 60.0), e -> {
-            if (Math.round(getCenterY() + getRadius()) != lvl.getGrassY() || (getCenterX() < lvl.getHoleOval().getCenterX() + (lvl.getHoleOval().getRadiusX() / 2) && getCenterX() > lvl.getHoleOval().getCenterX() - (lvl.getHoleOval().getRadiusX() / 2))) {
+            if (!getBoundsInParent().intersects(lvl.getGrass().getBoundsInParent()) || (getCenterX() < lvl.getHoleOval().getCenterX() + (lvl.getHoleOval().getRadiusX() / 2) && getCenterX() > lvl.getHoleOval().getCenterX() - (lvl.getHoleOval().getRadiusX() / 2))) {
                 vSpeed += GRAVITY;
             }
 
             System.out.println(!getBoundsInParent().intersects(lvl.getGrass().getBoundsInParent()));
 
-            if (Math.round(getCenterY() + getRadius()) < lvl.getGrassY() - 1) {
+            if (!getBoundsInParent().intersects(lvl.getGrass().getBoundsInParent())) {
                 hSpeed *= FRICTION;
             }
             else{
