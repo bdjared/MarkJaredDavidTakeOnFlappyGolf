@@ -36,10 +36,7 @@ public class Ball extends Circle {
 
     public void jumpLeft() {
         textScore.setText("" + ++score);
-        if (getBoundsInParent().intersects(lvl.getGreen().getBoundsInParent())) {
-            hSpeed -= 1.5;
-            vSpeed = 0;
-        } else {
+        if (!getBoundsInParent().intersects(lvl.getGreen().getBoundsInParent())) {
             if (vSpeed < -3) {
                 vSpeed = -8;
                 hSpeed -= 1.5;
@@ -51,6 +48,9 @@ public class Ball extends Circle {
                     gravityJump();
 
             }
+        } else {
+            hSpeed -= 1.5;
+            vSpeed = 0;
         }
     }
 
@@ -68,8 +68,7 @@ public class Ball extends Circle {
                 else
                     gravityJump();
             }
-        }
-        else {
+        } else {
             hSpeed += 1.5;
             vSpeed = 0;
         }

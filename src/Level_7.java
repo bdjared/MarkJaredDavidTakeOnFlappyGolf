@@ -11,7 +11,7 @@ public class Level_7 extends Hole {
     private Rectangle rightBttn = new Rectangle(100, 100);
     private Rectangle holeRect = new Rectangle(15,10);
     private Ellipse holeOval = new Ellipse(7,3);
-    private Rectangle green = new Rectangle(175, 7);
+    private Rectangle green = new Rectangle(177, 8);
 
     public Level_7() {
         sky.setFill(Color.LIGHTBLUE);
@@ -28,10 +28,12 @@ public class Level_7 extends Hole {
         holeOval.centerYProperty().setValue(373);
         holeOval.centerXProperty().setValue(667);
 
-        green.setX(560);
+        green.setX(559);
         green.setY(369.5);
         green.setArcWidth(15);
         green.setArcHeight(15);
+        green.setStrokeWidth(1);
+        green.setStroke(Color.TRANSPARENT);
         green.setFill(new Color(0f, 141/255f, 23/255f, 1));
 
         createButtons();
