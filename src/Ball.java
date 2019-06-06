@@ -114,7 +114,10 @@ public class Ball extends Circle {
         setCenterY(yStart);
         hSpeed = 0;
         vSpeed = 0;
+        setFill(Color.WHITE);
         textScore.setText("" + score);
+        returnText.setFill(Color.TRANSPARENT);
+        winText.setFill(Color.TRANSPARENT);
         animation.play();
     }
 
