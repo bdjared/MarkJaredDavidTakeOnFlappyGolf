@@ -129,7 +129,7 @@ public class Ball extends Circle {
             if (!getBoundsInParent().intersects(lvl.getGrass().getBoundsInParent()) || (getCenterX() < lvl.getHoleOval().getCenterX() + (lvl.getHoleOval().getRadiusX() / 2) && getCenterX() > lvl.getHoleOval().getCenterX() - (lvl.getHoleOval().getRadiusX() / 2))) {
                 vSpeed += GRAVITY;
             }
-            //System.out.println(vSpeed);
+
             if (!getBoundsInParent().intersects(lvl.getGrass().getBoundsInParent())) {
                 hSpeed *= FRICTION;
             }
