@@ -18,151 +18,88 @@ public class MainScreen extends Application {
         borderPane.setCenter(pane);
         borderPane.setBackground(new Background(new BackgroundFill(Color.LIGHTBLUE, CornerRadii.EMPTY, Insets.EMPTY)));
 
-        Circle level1 = new Circle(35);
-        level1.setCenterX(50);
-        level1.setCenterY(100);
-        level1.setStroke(Color.WHITE);
-
-        Circle level2 = new Circle(35);
-        level2.setCenterX(250);
-        level2.setCenterY(100);
-        level2.setStroke(Color.WHITE);
-
-        Circle level3 = new Circle(35);
-        level3.setCenterX(450);
-        level3.setCenterY(100);
-        level3.setStroke(Color.WHITE);
-
-        Circle level4 = new Circle(35);
-        level4.setCenterX(650);
-        level4.setCenterY(100);
-        level4.setStroke(Color.WHITE);
-
-        Circle level5 = new Circle(35);
-        level5.setCenterX(850);
-        level5.setCenterY(100);
-        level5.setStroke(Color.WHITE);
-
-        Circle level6 = new Circle(35);
-        level6.setCenterX(100);
-        level6.setCenterY(300);
-        level6.setStroke(Color.WHITE);
-
-        Circle level7 = new Circle(35);
-        level7.setCenterX(350);
-        level7.setCenterY(300);
-        level7.setStroke(Color.WHITE);
-
-        Circle level8 = new Circle(35);
-        level8.setCenterX(575);
-        level8.setCenterY(300);
-        level8.setStroke(Color.WHITE);
-
-        Circle level9 = new Circle(35);
-        level9.setCenterX(800);
-        level9.setCenterY(300);
-        level9.setStroke(Color.WHITE);
-
-        pane.getChildren().addAll(level1, level2, level3, level4, level5, level6, level7, level8, level9);
+        Hole[] holes = {new Level_1(), new Level_2(), new Level_3(), new Level_4(), new Level_5(), new Level_6(), new Level_7(), new Level_8(), new Level_9()};
 
         Scene scene = new Scene(borderPane, 900, 600);
         primaryStage.setTitle("Better Flappy Golf");
 
-        level1.setOnMouseEntered(e -> {
-            level1.setStrokeWidth(5);
-        });
+        for (int i = 0; i < 5; i++) {
+            Circle levelBttn = new Circle(50);
+            levelBttn.setCenterX(150 + i * 150);
+            levelBttn.setCenterY(175);
+            levelBttn.setFill(Color.WHITE);
+            levelBttn.setStrokeWidth(3);
+            levelBttn.setStroke(Color.LIGHTGREY);
 
-        level1.setOnMouseExited(e -> {
-            level1.setStrokeWidth(1);
-        });
+            levelBttn.setOnMouseEntered(e -> levelBttn.setStrokeWidth(5));
 
-        level2.setOnMouseEntered(e -> {
-            level2.setStrokeWidth(5);
-        });
+            levelBttn.setOnMouseExited(e -> levelBttn.setStrokeWidth(3));
 
-        level2.setOnMouseExited(e -> {
-            level2.setStrokeWidth(1);
-        });
+            Hole lvl = holes[i];
 
-        level3.setOnMouseEntered(e -> {
-            level3.setStrokeWidth(5);
-        });
-
-        level3.setOnMouseExited(e -> {
-            level3.setStrokeWidth(1);
-        });
-
-        level4.setOnMouseEntered(e -> {
-            level4.setStrokeWidth(5);
-        });
-
-        level4.setOnMouseExited(e -> {
-            level4.setStrokeWidth(1);
-        });
-
-        level5.setOnMouseEntered(e -> {
-            level5.setStrokeWidth(5);
-        });
-
-        level5.setOnMouseExited( e -> {
-            level5.setStrokeWidth(1);
-        });
-
-        level6.setOnMouseEntered(e -> {
-            level6.setStrokeWidth(5);
-        });
-
-        level6.setOnMouseExited( e -> {
-            level6.setStrokeWidth(1);
-        });
-
-        level7.setOnMouseEntered(e -> {
-            level7.setStrokeWidth(5);
-        });
-
-        level7.setOnMouseExited( e -> {
-            level7.setStrokeWidth(1);
-        });
-
-        level8.setOnMouseEntered(e -> {
-            level8.setStrokeWidth(5);
-        });
-
-        level8.setOnMouseExited( e -> {
-            level8.setStrokeWidth(1);
-        });
-
-        level9.setOnMouseEntered(e -> {
-            level9.setStrokeWidth(5);
-        });
-
-        level9.setOnMouseExited( e -> {
-            level9.setStrokeWidth(1);
-        });
-
-
-        level1.setOnMousePressed(e -> {
-            Level_1 lvl1 = new Level_1();
-            Scene lvlScene = new Scene(lvl1, 900, 600);
-            lvlScene.setOnKeyPressed(a -> {
-                if (a.getCode() == KeyCode.LEFT)
-                    lvl1.getPlayer().jumpLeft();
-                else if (a.getCode() == KeyCode.RIGHT)
-                    lvl1.getPlayer().jumpRight();
-                if (a.getCode() == KeyCode.ESCAPE) {
-                    lvl1.getPlayer().getAnimation().pause();
-                    primaryStage.setScene(scene);
-                    primaryStage.show();
-                    primaryStage.requestFocus();
-                }
-                if (a.getCode() == KeyCode.R){
-                    lvl1.getPlayer().reset();
-                }
+            levelBttn.setOnMousePressed(e -> {
+                Scene lvlScene = new Scene(lvl, 900, 600);
+                lvlScene.setOnKeyPressed(a -> {
+                    if (a.getCode() == KeyCode.LEFT)
+                        lvl.getPlayer().jumpLeft();
+                    else if (a.getCode() == KeyCode.RIGHT)
+                        lvl.getPlayer().jumpRight();
+                    if (a.getCode() == KeyCode.ESCAPE) {
+                        lvl.getPlayer().getAnimation().pause();
+                        primaryStage.setScene(scene);
+                        primaryStage.show();
+                        primaryStage.requestFocus();
+                    }
+                    if (a.getCode() == KeyCode.R){
+                        lvl.getPlayer().reset();
+                    }
+                });
+                primaryStage.setScene(lvlScene);
+                primaryStage.show();
+                primaryStage.requestFocus();
             });
-            primaryStage.setScene(lvlScene);
-            primaryStage.show();
-            primaryStage.requestFocus();
-        });
+
+            pane.getChildren().add(levelBttn);
+        }
+
+        for (int i = 5; i < 9; ++i) {
+            Circle levelBttn = new Circle(50);
+            levelBttn.setCenterX(225 + (i - 5) * 150);
+            levelBttn.setCenterY(325);
+            levelBttn.setFill(Color.WHITE);
+            levelBttn.setStrokeWidth(3);
+            levelBttn.setStroke(Color.LIGHTGREY);
+
+            levelBttn.setOnMouseEntered(e -> levelBttn.setStrokeWidth(5));
+
+            levelBttn.setOnMouseExited(e -> levelBttn.setStrokeWidth(3));
+
+            Hole lvl = holes[i];
+
+            levelBttn.setOnMousePressed(e -> {
+                Scene lvlScene = new Scene(lvl, 900, 600);
+                lvlScene.setOnKeyPressed(a -> {
+                    if (a.getCode() == KeyCode.LEFT)
+                        lvl.getPlayer().jumpLeft();
+                    else if (a.getCode() == KeyCode.RIGHT)
+                        lvl.getPlayer().jumpRight();
+                    if (a.getCode() == KeyCode.ESCAPE) {
+                        lvl.getPlayer().getAnimation().pause();
+                        primaryStage.setScene(scene);
+                        primaryStage.show();
+                        primaryStage.requestFocus();
+                    }
+                    if (a.getCode() == KeyCode.R){
+                        lvl.getPlayer().reset();
+                    }
+                });
+                primaryStage.setScene(lvlScene);
+                primaryStage.show();
+                primaryStage.requestFocus();
+            });
+
+            pane.getChildren().add(levelBttn);
+        }
 
         primaryStage.setScene(scene);
         primaryStage.setResizable(false);
