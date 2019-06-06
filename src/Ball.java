@@ -27,7 +27,7 @@ public class Ball extends Circle {
         lvl = hole;
         xStart= xPos;
         yStart = yPos;
-        setRadius(60);
+        setRadius(6);
         setCenterX(xPos);
         setCenterY(yPos);
         setFill(Color.WHITE);
@@ -125,7 +125,7 @@ public class Ball extends Circle {
                 vSpeed += GRAVITY;
             }
 
-            System.out.println(!getBoundsInParent().intersects(lvl.getGrass().getBoundsInParent()));
+            System.out.println((getCenterX() < lvl.getGreen().getX() || getCenterX() > lvl.getGreen().getX() + lvl.getGreen().getWidth()) || !getBoundsInParent().intersects(lvl.getGrass().getBoundsInParent()));
 
             if (!getBoundsInParent().intersects(lvl.getGrass().getBoundsInParent())) {
                 hSpeed *= FRICTION;
@@ -143,11 +143,13 @@ public class Ball extends Circle {
             }
 
             for (int x = 0; x <= lvl.getWidth(); x++) {
-                if (contains(x, lvl.getGrassY()) && (getCenterX() > lvl.getHoleOval().getCenterX() + (lvl.getHoleOval().getRadiusX() / 2) || getCenterX() < lvl.getHoleOval().getCenterX() - (lvl.getHoleOval().getRadiusX() / 2))) {
-                    setCenterY(lvl.getGrassY() - getRadius());
+                if (getBoundsInParent().intersects(lvl.getGrass().getBoundsInParent()) && (getCenterX() > lvl.getHoleOval().getCenterX() + (lvl.getHoleOval().getRadiusX() / 2) || getCenterX() < lvl.getHoleOval().getCenterX() - (lvl.getHoleOval().getRadiusX() / 2))) {
+                    do {
+                        setCenterY(getCenterY() - .1);
+                    } while (getBoundsInParent().intersects(lvl.getGrass().getBoundsInParent()));
                     vSpeed /= -3;
                 }
-                else if ((getCenterX() < lvl.getHoleOval().getCenterX() + (lvl.getHoleOval().getRadiusX() / 2) && getCenterX() > lvl.getHoleOval().getCenterX() - (lvl.getHoleOval().getRadiusX() / 2) && contains(x, lvl.getGrassY() - lvl.getHoleRect().getHeight()))) {
+                else if ((getCenterX() < lvl.getHoleOval().getCenterX() + (lvl.getHoleOval().getRadiusX() / 2) && getCenterX() > lvl.getHoleOval().getCenterX() - (lvl.getHoleOval().getRadiusX() / 2) && getBoundsInParent().intersects(lvl.getGrass().getBoundsInParent()))) {
                     toFront();
                     if (vSpeed < 1)
                         vSpeed = .75;
@@ -159,7 +161,7 @@ public class Ball extends Circle {
                 vSpeed = 0;
             }
 
-            if (getCenterY() - getRadius() > lvl.getGrassY() - getRadius()) {
+            if (getCenterY() - getRadius() > lvl.getGreen().getY() - getRadius()) {
                 setFill(Color.TRANSPARENT);
                 textScore.setFill(Color.TRANSPARENT);
                 win();
