@@ -116,6 +116,7 @@ public class Ball extends Circle {
         vSpeed = 0;
         setFill(Color.WHITE);
         textScore.setText("" + score);
+        textScore.setFill(Color.WHITE);
         returnText.setFill(Color.TRANSPARENT);
         winText.setFill(Color.TRANSPARENT);
         animation.play();
