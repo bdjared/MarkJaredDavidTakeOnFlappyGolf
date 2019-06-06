@@ -150,6 +150,7 @@ public class MainScreen extends Application {
                 else if (a.getCode() == KeyCode.RIGHT)
                     lvl1.getPlayer().jumpRight();
                 if (a.getCode() == KeyCode.ESCAPE) {
+                    lvl1.getPlayer().getAnimation().pause();
                     primaryStage.setScene(scene);
                     primaryStage.show();
                     primaryStage.requestFocus();

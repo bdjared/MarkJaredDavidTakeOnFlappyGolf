@@ -104,6 +104,10 @@ public class Ball extends Circle {
         return returnText;
     }
 
+    public Timeline getAnimation() {
+        return animation;
+    }
+
     public void reset() {
         this.score = 0;
         setCenterX(xStart);
