@@ -157,7 +157,7 @@ public class Ball extends Circle {
             else if ((getCenterX() < lvl.getHoleOval().getCenterX() + (lvl.getHoleOval().getRadiusX() / 2) && getCenterX() > lvl.getHoleOval().getCenterX() - (lvl.getHoleOval().getRadiusX() / 2) && getBoundsInParent().intersects(lvl.getGrass().getBoundsInParent()))) {
                 toFront();
                 if (vSpeed < 1)
-                    vSpeed = .75;
+                    vSpeed = .9;
                 setCenterY(getCenterY() + vSpeed);
             }
 
