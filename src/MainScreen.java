@@ -36,9 +36,11 @@ public class MainScreen extends Application {
             levelBttn.setOnMouseExited(e -> levelBttn.setStrokeWidth(4));
 
             Hole lvl = holes[i];
+            Scene lvlScene = new Scene(lvl, 900, 600);
 
             levelBttn.setOnMousePressed(e -> {
-                Scene lvlScene = new Scene(lvl, 900, 600);
+                lvl.getPlayer().reset();
+
                 lvlScene.setOnKeyPressed(a -> {
                     if (a.getCode() == KeyCode.LEFT)
                         lvl.getPlayer().jumpLeft();
@@ -54,6 +56,7 @@ public class MainScreen extends Application {
                         lvl.getPlayer().reset();
                     }
                 });
+
                 primaryStage.setScene(lvlScene);
                 primaryStage.show();
                 primaryStage.requestFocus();
@@ -75,9 +78,11 @@ public class MainScreen extends Application {
             levelBttn.setOnMouseExited(e -> levelBttn.setStrokeWidth(4));
 
             Hole lvl = holes[i];
+            Scene lvlScene = new Scene(lvl, 900, 600);
 
             levelBttn.setOnMousePressed(e -> {
-                Scene lvlScene = new Scene(lvl, 900, 600);
+                lvl.getPlayer().reset();
+
                 lvlScene.setOnKeyPressed(a -> {
                     if (a.getCode() == KeyCode.LEFT)
                         lvl.getPlayer().jumpLeft();
@@ -93,6 +98,7 @@ public class MainScreen extends Application {
                         lvl.getPlayer().reset();
                     }
                 });
+
                 primaryStage.setScene(lvlScene);
                 primaryStage.show();
                 primaryStage.requestFocus();
