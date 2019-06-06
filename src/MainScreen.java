@@ -28,12 +28,12 @@ public class MainScreen extends Application {
             levelBttn.setCenterX(150 + i * 150);
             levelBttn.setCenterY(175);
             levelBttn.setFill(Color.WHITE);
-            levelBttn.setStrokeWidth(3);
+            levelBttn.setStrokeWidth(4);
             levelBttn.setStroke(Color.LIGHTGREY);
 
-            levelBttn.setOnMouseEntered(e -> levelBttn.setStrokeWidth(5));
+            levelBttn.setOnMouseEntered(e -> levelBttn.setStrokeWidth(6));
 
-            levelBttn.setOnMouseExited(e -> levelBttn.setStrokeWidth(3));
+            levelBttn.setOnMouseExited(e -> levelBttn.setStrokeWidth(4));
 
             Hole lvl = holes[i];
 
@@ -67,12 +67,12 @@ public class MainScreen extends Application {
             levelBttn.setCenterX(225 + (i - 5) * 150);
             levelBttn.setCenterY(325);
             levelBttn.setFill(Color.WHITE);
-            levelBttn.setStrokeWidth(3);
+            levelBttn.setStrokeWidth(4);
             levelBttn.setStroke(Color.LIGHTGREY);
 
-            levelBttn.setOnMouseEntered(e -> levelBttn.setStrokeWidth(5));
+            levelBttn.setOnMouseEntered(e -> levelBttn.setStrokeWidth(6));
 
-            levelBttn.setOnMouseExited(e -> levelBttn.setStrokeWidth(3));
+            levelBttn.setOnMouseExited(e -> levelBttn.setStrokeWidth(4));
 
             Hole lvl = holes[i];
 
