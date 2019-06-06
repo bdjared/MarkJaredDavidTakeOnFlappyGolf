@@ -36,7 +36,10 @@ public class Ball extends Circle {
 
     public void jumpLeft() {
         textScore.setText("" + ++score);
-        if ((getCenterX() < lvl.getGreen().getX() || getCenterX() > lvl.getGreen().getX() + lvl.getGreen().getWidth()) || !getBoundsInParent().intersects(lvl.getGrass().getBoundsInParent())) {
+        if (getBoundsInParent().intersects(lvl.getGreen().getBoundsInParent())) {
+            hSpeed -= 1.5;
+            vSpeed = 0;
+        } else {
             if (vSpeed < -3) {
                 vSpeed = -8;
                 hSpeed -= 1.5;
@@ -46,17 +49,15 @@ public class Ball extends Circle {
                     vSpeed -= 5;
                 else
                     gravityJump();
+
             }
-        }
-        else{
-            hSpeed -= 1.5;
-            vSpeed = 0;
         }
     }
 
+
     public void jumpRight() {
         textScore.setText("" + ++score);
-        if ((getCenterX() < lvl.getGreen().getX() || getCenterX() > lvl.getGreen().getX() + lvl.getGreen().getWidth()) || !getBoundsInParent().intersects(lvl.getGrass().getBoundsInParent())) {
+        if (!getBoundsInParent().intersects(lvl.getGreen().getBoundsInParent())) {
             if (vSpeed < -3) {
                 vSpeed = -8;
                 hSpeed += 1.5;
@@ -149,6 +150,7 @@ public class Ball extends Circle {
                 do {
                     setCenterY(getCenterY() - .1);
                 } while (getBoundsInParent().intersects(lvl.getGrass().getBoundsInParent()));
+                if (vSpeed > 0)
                 vSpeed /= -3;
             }
             else if ((getCenterX() < lvl.getHoleOval().getCenterX() + (lvl.getHoleOval().getRadiusX() / 2) && getCenterX() > lvl.getHoleOval().getCenterX() - (lvl.getHoleOval().getRadiusX() / 2) && getBoundsInParent().intersects(lvl.getGrass().getBoundsInParent()))) {

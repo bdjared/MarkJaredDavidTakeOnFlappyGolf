@@ -30,7 +30,7 @@ public class Level_1 extends Hole {
         holeOval.centerXProperty().setValue(667);
 
         green.setX(560);
-        green.setY(370);
+        green.setY(369.5);
         green.setArcWidth(15);
         green.setArcHeight(15);
         green.setFill(new Color(0f, 141/255f, 23/255f, 1));
