@@ -165,7 +165,7 @@ public class Ball extends Circle {
                 vSpeed = 0;
             }
 
-            if (getCenterY() - getRadius() > lvl.getGreen().getY() - getRadius()) {
+            if (getCenterY() - getRadius() > lvl.getGreen().getY() - getRadius() && (getCenterX() < lvl.getHoleOval().getCenterX() + (lvl.getHoleOval().getRadiusX() / 2)) && (getCenterX() > lvl.getHoleOval().getCenterX() - (lvl.getHoleOval().getRadiusX() / 2))) {
                 setFill(Color.TRANSPARENT);
                 textScore.setFill(Color.TRANSPARENT);
                 win();
