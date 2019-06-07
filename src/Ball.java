@@ -125,11 +125,11 @@ public class Ball extends Circle {
 
     public void play() {
         animation = new Timeline(new KeyFrame(Duration.millis(1000 / 60.0), e -> {
-            if (!getBoundsInParent().intersects(lvl.getGrass().getBoundsInParent()) || (getCenterX() < lvl.getHoleOval().getCenterX() + (lvl.getHoleOval().getRadiusX() / 2) && getCenterX() > lvl.getHoleOval().getCenterX() - (lvl.getHoleOval().getRadiusX() / 2))) {
+            if (!getBoundsInParent().intersects(lvl.getTop().getBoundsInParent()) || (getCenterX() < lvl.getHoleOval().getCenterX() + (lvl.getHoleOval().getRadiusX() / 2) && getCenterX() > lvl.getHoleOval().getCenterX() - (lvl.getHoleOval().getRadiusX() / 2))) {
                 vSpeed += GRAVITY;
             }
 
-            if (!getBoundsInParent().intersects(lvl.getGrass().getBoundsInParent())) {
+            if (!getBoundsInParent().intersects(lvl.getTop().getBoundsInParent())) {
                 hSpeed *= FRICTION;
             }
 
@@ -146,14 +146,14 @@ public class Ball extends Circle {
             }
 
 
-            if (getBoundsInParent().intersects(lvl.getGrass().getBoundsInParent()) && (getCenterX() > lvl.getHoleOval().getCenterX() + (lvl.getHoleOval().getRadiusX() / 2) || getCenterX() < lvl.getHoleOval().getCenterX() - (lvl.getHoleOval().getRadiusX() / 2))) {
+            if (getBoundsInParent().intersects(lvl.getTop().getBoundsInParent()) && (getCenterX() > lvl.getHoleOval().getCenterX() + (lvl.getHoleOval().getRadiusX() / 2) || getCenterX() < lvl.getHoleOval().getCenterX() - (lvl.getHoleOval().getRadiusX() / 2))) {
                 do {
                     setCenterY(getCenterY() - .1);
-                } while (getBoundsInParent().intersects(lvl.getGrass().getBoundsInParent()));
+                } while (getBoundsInParent().intersects(lvl.getTop().getBoundsInParent()));
                 if (vSpeed > 0)
                 vSpeed /= -3;
             }
-            else if ((getCenterX() < lvl.getHoleOval().getCenterX() + (lvl.getHoleOval().getRadiusX() / 2) && getCenterX() > lvl.getHoleOval().getCenterX() - (lvl.getHoleOval().getRadiusX() / 2) && getBoundsInParent().intersects(lvl.getGrass().getBoundsInParent()))) {
+            else if ((getCenterX() < lvl.getHoleOval().getCenterX() + (lvl.getHoleOval().getRadiusX() / 2) && getCenterX() > lvl.getHoleOval().getCenterX() - (lvl.getHoleOval().getRadiusX() / 2) && getBoundsInParent().intersects(lvl.getTop().getBoundsInParent()))) {
                 toFront();
                 if (vSpeed < 1)
                     vSpeed = .9;

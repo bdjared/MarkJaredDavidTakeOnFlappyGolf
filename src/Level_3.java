@@ -1,24 +1,24 @@
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Ellipse;
+import javafx.scene.shape.Line;
 import javafx.scene.shape.Polygon;
 import javafx.scene.shape.Rectangle;
 
 public class Level_3 extends Hole {
     private Ball player = new Ball(100, 358, this);
     private Rectangle sky = new Rectangle(900, 600);
-    private Polygon grass = new Polygon(-.1, 369.9, 900.1, 369.9, 900.1, 600.1, -.1, 600.1);
+    private Polygon grass = new Polygon(0, 370, 900, 370, 900, 600, 0, 600);
     private Rectangle leftBttn = new Rectangle(100, 100);
     private Rectangle rightBttn = new Rectangle(100, 100);
     private Rectangle holeRect = new Rectangle(15,10);
     private Ellipse holeOval = new Ellipse(7,3);
     private Rectangle green = new Rectangle(177, 8);
+    private Line top = new Line(0, 369.9, 900, 369.9);
 
     public Level_3() {
         sky.setFill(Color.LIGHTBLUE);
 
         grass.setFill(new Color(0.23529411764f, 0.8525490196f, 0.01176470588f, 1));
-        grass.setStrokeWidth(.2);
-        grass.setStroke(Color.LIGHTBLUE);
 
         holeRect.setFill(new Color(0.23529411764f, 0.8525490196f, 0.01176470588f, 1));
         holeRect.setX(660);
@@ -35,6 +35,9 @@ public class Level_3 extends Hole {
         green.setStrokeWidth(1);
         green.setStroke(Color.TRANSPARENT);
         green.setFill(new Color(0f, 141/255f, 23/255f, 1));
+
+        top.setStrokeWidth(.1);
+        top.setFill(Color.TRANSPARENT);
 
         createButtons();
 
@@ -61,8 +64,8 @@ public class Level_3 extends Hole {
         return player;
     }
 
-    public Rectangle getHoleRect() {
-        return holeRect;
+    public Line getTop() {
+        return new Line();
     }
 
     public Ellipse getHoleOval() {
