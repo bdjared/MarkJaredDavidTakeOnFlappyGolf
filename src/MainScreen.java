@@ -2,6 +2,8 @@ import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
@@ -11,6 +13,11 @@ import javafx.stage.Stage;
 
 public class MainScreen extends Application {
     public void start(Stage primaryStage) {
+        Image clouds = new Image("cartooncloud4.png");
+        ImageView imageView = new ImageView(clouds);
+        imageView.setX(450);
+        imageView.setY(200);
+
         BorderPane borderPane = new BorderPane();
         Pane pane = new Pane();
         borderPane.setTop(new CustomPane("Jared, David, and Mark Land"));
@@ -18,7 +25,7 @@ public class MainScreen extends Application {
         borderPane.setBackground(new Background(new BackgroundFill(Color.LIGHTBLUE, CornerRadii.EMPTY, Insets.EMPTY)));
 
         Hole[] holes = {new Level_1(), new Level_2(), new Level_3(), new Level_4(), new Level_5(), new Level_6(), new Level_7(), new Level_8(), new Level_9()};
-
+        pane.getChildren().add(imageView);
         Scene scene = new Scene(borderPane, 900, 600);
         primaryStage.setTitle("Better Flappy Golf");
 
