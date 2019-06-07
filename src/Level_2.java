@@ -40,17 +40,17 @@ public class Level_2 extends Hole {
         green.setStroke(Color.TRANSPARENT);
         green.setFill(new Color(0f, 141/255f, 23/255f, 1));
 
-//        top1.setStrokeWidth(.1);
-//        top1.setFill(Color.TRANSPARENT);
-//
-//        top2.setStrokeWidth(.1);
-//        top2.setFill(Color.TRANSPARENT);
-//
-//        top3.setStrokeWidth(.1);
-//        top3.setFill(Color.TRANSPARENT);
-//
-//        top4.setStrokeWidth(.1);
-//        top4.setFill(Color.TRANSPARENT);
+        top1.setStrokeWidth(.1);
+        top1.setFill(Color.TRANSPARENT);
+
+        top2.setStrokeWidth(.1);
+        top2.setFill(Color.TRANSPARENT);
+
+        top3.setStrokeWidth(.1);
+        top3.setFill(Color.TRANSPARENT);
+
+        top4.setStrokeWidth(.1);
+        top4.setFill(Color.TRANSPARENT);
 
         createButtons();
 
