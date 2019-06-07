@@ -30,13 +30,23 @@ public class MainScreen extends Application {
             levelBttn.setStrokeWidth(4);
             levelBttn.setStroke(Color.LIGHTGREY);
 
-            Text levelTxt = new Text("" + i);
+            Text levelTxt = new Text("" + (i+1));
             levelTxt.setX(levelBttn.getCenterX());
             levelTxt.setY(levelBttn.getCenterY());
+            levelTxt.setFill(Color.BLACK);
 
-            levelBttn.setOnMouseEntered(e -> levelBttn.setStrokeWidth(6));
+            levelBttn.setOnMouseEntered(e -> {
+                levelBttn.setFill(Color.BLACK);
+                levelTxt.setFill(Color.WHITE);
+                levelBttn.setStroke(Color.YELLOW);
+            });
 
-            levelBttn.setOnMouseExited(e -> levelBttn.setStrokeWidth(4));
+            levelBttn.setOnMouseExited(e -> {
+                levelBttn.setFill(Color.WHITE);
+                levelTxt.setFill(Color.BLACK);
+                levelBttn.setStroke(Color.LIGHTGREY);
+
+            });
 
             Hole lvl = holes[i];
             Scene lvlScene = new Scene(lvl, 900, 600);
@@ -76,13 +86,29 @@ public class MainScreen extends Application {
             levelBttn.setStrokeWidth(4);
             levelBttn.setStroke(Color.LIGHTGREY);
 
-            Text levelTxt = new Text("" + i);
+            Circle greyCircle = new Circle(5);
+            greyCircle.setCenterX(levelBttn.getCenterX() + 15);
+            greyCircle.setCenterY(levelBttn.getCenterY() + 15);
+            greyCircle.setFill(Color.LIGHTGREY);
+
+            Text levelTxt = new Text("" + (i+1));
             levelTxt.setX(levelBttn.getCenterX());
             levelTxt.setY(levelBttn.getCenterY());
+            levelTxt.setFill(Color.BLACK);
 
-            levelBttn.setOnMouseEntered(e -> levelBttn.setFill(Color.BLACK));
+            levelBttn.setOnMouseEntered(e -> {
+                levelBttn.setFill(Color.BLACK);
+                levelTxt.setFill(Color.WHITE);
+                levelBttn.setStroke(Color.YELLOW);
+            });
 
-            levelBttn.setOnMouseExited(e -> levelBttn.setFill(Color.WHITE));
+            levelBttn.setOnMouseExited(e -> {
+                levelBttn.setFill(Color.WHITE);
+                levelTxt.setFill(Color.BLACK);
+                levelBttn.setStroke(Color.LIGHTGREY);
+
+
+            });
 
             Hole lvl = holes[i];
             Scene lvlScene = new Scene(lvl, 900, 600);
@@ -111,7 +137,7 @@ public class MainScreen extends Application {
                 primaryStage.requestFocus();
             });
 
-            pane.getChildren().addAll(levelBttn, levelTxt);
+            pane.getChildren().addAll(levelBttn, levelTxt, greyCircle);
         }
 
         primaryStage.setScene(scene);
