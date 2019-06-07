@@ -13,7 +13,7 @@ import javafx.stage.Stage;
 
 public class MainScreen extends Application {
     public void start(Stage primaryStage) {
-        Image clouds = new Image("cartooncloud4.png");
+        Image clouds = new Image("cloud.png");
         ImageView imageView = new ImageView(clouds);
         imageView.setX(450);
         imageView.setY(200);
