@@ -7,14 +7,15 @@ import javafx.scene.shape.Rectangle;
 public class Level_3 extends Hole {
     private Ball player = new Ball(100, 358, this);
     private Rectangle sky = new Rectangle(900, 600);
-    private Polygon grass = new Polygon(0, 370, 900, 370, 900, 600, 0, 600);
+    private Polygon grass = new Polygon(0, 370, 600, 370, 600, 270, 900, 270, 900, 600, 0, 600);
     private Rectangle leftBttn = new Rectangle(100, 100);
     private Rectangle rightBttn = new Rectangle(100, 100);
     private Rectangle holeRect = new Rectangle(15,10);
     private Ellipse holeOval = new Ellipse(7,3);
     private Rectangle green = new Rectangle(177, 8);
-    private Line top = new Line(0, 369.9, 900, 369.9);
-    private double topY = top.getStartY();
+    private Line top = new Line(0, 369.9, 600, 369.9);
+    private Line top2 = new Line(600, 269.9, 900, 269.9);
+    private double topY = top2.getStartY();
 
     public Level_3() {
         sky.setFill(Color.LIGHTBLUE);
@@ -22,15 +23,15 @@ public class Level_3 extends Hole {
         grass.setFill(new Color(0.23529411764f, 0.8525490196f, 0.01176470588f, 1));
 
         holeRect.setFill(new Color(0.23529411764f, 0.8525490196f, 0.01176470588f, 1));
-        holeRect.setX(660);
-        holeRect.setY(370);
+        holeRect.setX(760);
+        holeRect.setY(270);
 
         holeOval.setFill(Color.BLACK);
-        holeOval.centerYProperty().setValue(373);
-        holeOval.centerXProperty().setValue(667);
+        holeOval.centerYProperty().setValue(273);
+        holeOval.centerXProperty().setValue(767);
 
-        green.setX(559);
-        green.setY(369.5);
+        green.setX(659);
+        green.setY(269.5);
         green.setArcWidth(15);
         green.setArcHeight(15);
         green.setStrokeWidth(1);
@@ -66,7 +67,9 @@ public class Level_3 extends Hole {
     }
 
     public Line getTop() {
-        return new Line();
+        if (player.getCenterX() < 600)
+            return top;
+        return top2;
     }
 
     public double getTopY() {
