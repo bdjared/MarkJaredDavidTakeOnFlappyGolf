@@ -7,15 +7,14 @@ import javafx.scene.shape.Rectangle;
 public class Level_5 extends Hole {
     private Ball player = new Ball(100, 258, this);
     private Rectangle sky = new Rectangle(900, 600);
-    private Polygon grass = new Polygon(0, 270, 500, 270, 500, 420, 575, 420, 575, 320, 900, 320, 900, 600, 0, 600);
+    private Polygon grass = new Polygon(0, 270, 500, 270, 500, 420, 900, 420, 900, 600, 0, 600);
     private Rectangle leftBttn = new Rectangle(100, 100);
     private Rectangle rightBttn = new Rectangle(100, 100);
     private Rectangle holeRect = new Rectangle(15,10);
     private Ellipse holeOval = new Ellipse(7,3);
-    private Rectangle green = new Rectangle(45, 8);
+    private Rectangle green = new Rectangle(125, 8);
     private Line top1 = new Line(0, 269.9, 500, 269.9);
-    private Line top2 = new Line(500, 419.9, 575, 419.9);
-    private Line top3 = new Line(575, 319.9, 900, 319.9);
+    private Line top2 = new Line(500, 419.9, 900, 419.9);
     private double topY = top1.getStartY();
 
     public Level_5() {
@@ -45,9 +44,6 @@ public class Level_5 extends Hole {
         top2.setStrokeWidth(.1);
         top2.setFill(Color.TRANSPARENT);
 
-        top3.setStrokeWidth(.1);
-        top3.setFill(Color.TRANSPARENT);
-
         createButtons();
 
         getChildren().addAll(sky, grass, holeRect, green, holeOval, player, leftBttn, rightBttn, player.getWinText(), player.getReturnText(), player.textScore());
@@ -76,9 +72,7 @@ public class Level_5 extends Hole {
     public Line getTop() {
         if (player.getCenterX() < 500)
             return top1;
-        else if (player.getCenterX() < 575)
-            return top2;
-        return top3;
+        return top2;
     }
 
     public double getTopY() {
