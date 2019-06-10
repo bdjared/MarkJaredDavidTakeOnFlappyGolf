@@ -119,6 +119,9 @@ public class Ball extends Circle {
         textScore.setFill(Color.WHITE);
         returnText.setFill(Color.TRANSPARENT);
         winText.setFill(Color.TRANSPARENT);
+        if((animation!= null) && (animation.getStatus() == Animation.Status.RUNNING)) {
+            animation.stop();
+        }
         play();
     }
 
