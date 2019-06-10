@@ -74,7 +74,7 @@ public class Level_2 extends Hole {
     }
 
     public Line getTop() {
-        if (player.getCenterX() > 0 && player.getCenterX() < 350)
+        if (player.getCenterX() < 350)
             return top1;
         else if (player.getCenterX() < 450)
             return top2;
