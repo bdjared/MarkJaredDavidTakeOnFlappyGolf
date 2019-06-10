@@ -148,8 +148,14 @@ public class Ball extends Circle {
                 hSpeed /= -2;
             }
 
-            if (getCenterX() + hSpeed + getRadius() > lvl.getTop().getEndX() && getCenterY() - getRadius() > lvl.getTopY() || getCenterX() + hSpeed - getRadius() < lvl.getTop().getStartX() && getCenterY() - getRadius() > lvl.getTopY()) {
+            if (getCenterX() + getRadius() > lvl.getTop().getEndX() && getCenterY() - getRadius() > lvl.getTopY()) {
                 hSpeed /= -2;
+                setCenterX(lvl.getTop().getEndX() - getRadius());
+            }
+
+            if (getCenterX() - getRadius() < lvl.getTop().getStartX() && getCenterY() - getRadius() > lvl.getTopY()) {
+                hSpeed /= -2;
+                setCenterX(lvl.getTop().getStartX() + getRadius());
             }
 
             if (getBoundsInParent().intersects(lvl.getTop().getBoundsInParent()) && (getCenterX() > lvl.getHoleOval().getCenterX() + (lvl.getHoleOval().getRadiusX() / 2) || getCenterX() < lvl.getHoleOval().getCenterX() - (lvl.getHoleOval().getRadiusX() / 2))) {
