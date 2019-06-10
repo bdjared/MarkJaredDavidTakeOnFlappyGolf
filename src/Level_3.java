@@ -14,6 +14,7 @@ public class Level_3 extends Hole {
     private Ellipse holeOval = new Ellipse(7,3);
     private Rectangle green = new Rectangle(177, 8);
     private Line top = new Line(0, 369.9, 900, 369.9);
+    private double topY = top.getStartY();
 
     public Level_3() {
         sky.setFill(Color.LIGHTBLUE);
@@ -67,6 +68,11 @@ public class Level_3 extends Hole {
     public Line getTop() {
         return new Line();
     }
+
+    public double getTopY() {
+        return topY;
+    }
+
 
     public Ellipse getHoleOval() {
         return holeOval;
