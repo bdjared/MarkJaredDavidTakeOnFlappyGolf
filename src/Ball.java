@@ -1,3 +1,4 @@
+import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.scene.paint.Color;
@@ -148,7 +149,7 @@ public class Ball extends Circle {
             if (getBoundsInParent().intersects(lvl.getTop().getBoundsInParent()) && (getCenterX() > lvl.getHoleOval().getCenterX() + (lvl.getHoleOval().getRadiusX() / 2) || getCenterX() < lvl.getHoleOval().getCenterX() - (lvl.getHoleOval().getRadiusX() / 2))) {
                 do {
                     setCenterY(getCenterY() - .1);
-                } while (lvl.getTop().contains(getCenterX(), -(lvl.getTop().getStartY() - lvl.getTop().getEndY()) / (lvl.getTop().getStartX() - lvl.getTop().getEndX() * getCenterX())));
+                } while (getBoundsInParent().intersects(lvl.getTop().getBoundsInParent()));
                 if (vSpeed > 0)
                 vSpeed /= -3;
             }
