@@ -10,7 +10,6 @@ public class Level_6 extends Hole {
     private Polygon grass = new Polygon(0, 100, 300, 100, 300, 500, 850, 500, 850, 300,600,300,600,100, 900,100,900,900,0,900);
     private Rectangle leftBttn = new Rectangle(100, 100);
     private Rectangle rightBttn = new Rectangle(100, 100);
-    private Rectangle holeRect = new Rectangle(15,10);
     private Ellipse holeOval = new Ellipse(7,3);
     private Rectangle green = new Rectangle(250, 8);
     private Line top = new Line(0, 100, 900, 100);
@@ -40,7 +39,7 @@ public class Level_6 extends Hole {
 
         createButtons();
 
-        getChildren().addAll(sky, grass, holeRect, green, holeOval, player, leftBttn, rightBttn, player.getWinText(), player.getReturnText(), player.textScore());
+        getChildren().addAll(sky, grass, green, holeOval, player, leftBttn, rightBttn, player.getWinText(), player.getReturnText(), player.textScore());
     }
 
     public void createButtons(){
