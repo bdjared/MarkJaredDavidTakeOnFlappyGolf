@@ -128,6 +128,9 @@ public class Ball extends Circle {
 
     public void play() {
         animation = new Timeline(new KeyFrame(Duration.millis(1000 / 60.0), e -> {
+            setCenterX(getCenterX() + hSpeed);
+            setCenterY(getCenterY() + vSpeed);
+
             if (!getBoundsInParent().intersects(lvl.getTop().getBoundsInParent()) || (getCenterX() < lvl.getHoleOval().getCenterX() + (lvl.getHoleOval().getRadiusX() / 2) && getCenterX() > lvl.getHoleOval().getCenterX() - (lvl.getHoleOval().getRadiusX() / 2))) {
                 vSpeed += GRAVITY;
             }
@@ -159,12 +162,17 @@ public class Ball extends Circle {
             }
 
             if (getBoundsInParent().intersects(lvl.getTop().getBoundsInParent()) && (getCenterX() > lvl.getHoleOval().getCenterX() + (lvl.getHoleOval().getRadiusX() / 2) || getCenterX() < lvl.getHoleOval().getCenterX() - (lvl.getHoleOval().getRadiusX() / 2))) {
-                do {
-                    setCenterY(getCenterY() - .1);
-                } while (getBoundsInParent().intersects(lvl.getTop().getBoundsInParent()));
-
-                if (vSpeed > 0)
-                vSpeed /= -3;
+                if (getCenterY() > 220 || getCenterY() < 180) {
+                    toBack();
+                    if (vSpeed > 0)
+                        vSpeed /= -3;
+                    setCenterY(getCenterY() + vSpeed);
+                    toFront();
+                }
+                else {
+                    setCenterY(215 + getRadius());
+                    vSpeed = 0;
+                }
             }
             else if ((getCenterX() < lvl.getHoleOval().getCenterX() + (lvl.getHoleOval().getRadiusX() / 2) && getCenterX() > lvl.getHoleOval().getCenterX() - (lvl.getHoleOval().getRadiusX() / 2) && getBoundsInParent().intersects(lvl.getTop().getBoundsInParent()))) {
                 toFront();
@@ -182,9 +190,6 @@ public class Ball extends Circle {
                 textScore.setFill(Color.TRANSPARENT);
                 win();
             }
-
-            setCenterX(getCenterX() + hSpeed);
-            setCenterY(getCenterY() + vSpeed);
         }));
         animation.setCycleCount(Timeline.INDEFINITE);
         animation.play();

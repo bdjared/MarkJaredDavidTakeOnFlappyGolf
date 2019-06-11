@@ -38,7 +38,7 @@ public class Level_1 extends Hole {
         green.setFill(new Color(0f, 141/255f, 23/255f, 1));
 
         top.setStrokeWidth(.1);
-        top.setFill(Color.TRANSPARENT);
+        top.setStroke(Color.TRANSPARENT);
 
         createButtons();
 
