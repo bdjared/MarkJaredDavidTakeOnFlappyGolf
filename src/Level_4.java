@@ -22,10 +22,12 @@ public class Level_4 extends Hole {
 
     public Level_4() {
         sky.setFill(Color.LIGHTBLUE);
-
+        top2.setStrokeWidth(5);
+        top2.setStroke(Color.BLACK);
         grass.setFill(new Color(0.23529411764f, 0.8525490196f, 0.01176470588f, 1));
         platform1.setFill(new Color(86/255f, 86/255f, 86/255f, 1));
         platform2.setFill(new Color(86/255f, 86/255f, 86/255f, 1));
+
 
         holeRect.setFill(new Color(86/255f, 86/255f, 86/255f, 1));
         holeRect.setX(660);
@@ -48,7 +50,7 @@ public class Level_4 extends Hole {
 
         createButtons();
 
-        getChildren().addAll(sky, grass,platform2, platform1, holeRect, green, holeOval, player, leftBttn, rightBttn, player.getWinText(), player.getReturnText(), player.textScore());
+        getChildren().addAll(sky, grass,platform2, platform1, holeRect, green, holeOval, player, leftBttn, rightBttn, player.getWinText(), player.getReturnText(), player.textScore(), top2);
     }
 
     public void createButtons(){
@@ -75,10 +77,10 @@ public class Level_4 extends Hole {
         if ((player.getBoundsInParent().intersects(grass.getBoundsInParent()))) {
             return top;
         }
-        else if(player.getBoundsInParent().intersects(platform1.getBoundsInParent())) {
+        else if(player.getBoundsInParent().intersects(platform2.getBoundsInParent())) {
             return top1;
         }
-        else if(player.getBoundsInParent().intersects(platform2.getBoundsInParent())){
+        else if(player.getBoundsInParent().intersects(platform1.getBoundsInParent())){
             return top2;
         }
         return top;
