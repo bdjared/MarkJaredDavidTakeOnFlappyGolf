@@ -173,7 +173,6 @@ public class Ball extends Circle {
                 setCenterY(getCenterY() + vSpeed);
             }
 
-
             if (getCenterY() + vSpeed - getRadius() < 0) {
                 vSpeed = 0;
             }
