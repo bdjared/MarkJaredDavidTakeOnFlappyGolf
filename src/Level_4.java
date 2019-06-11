@@ -73,11 +73,7 @@ public class Level_4 extends Hole {
         if ((player.getBoundsInParent().intersects(grass.getBoundsInParent()))) {
             return top;
         }
-        else if(player.getBoundsInParent().intersects(platform2.getBoundsInParent())) {
-            return top1;
-        }
-
-        return top;
+        return top1;
     }
 
     public double getTopY() {
