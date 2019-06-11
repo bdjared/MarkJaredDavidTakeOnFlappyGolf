@@ -38,7 +38,7 @@ public class Level_4 extends Hole {
         holeOval.centerXProperty().setValue(667);
 
         green.setX(559);
-        green.setY(195.5);
+        green.setY(194.5);
         green.setArcWidth(15);
         green.setArcHeight(15);
         green.setStrokeWidth(1);
