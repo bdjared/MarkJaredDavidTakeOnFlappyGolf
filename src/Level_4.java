@@ -11,7 +11,7 @@ public class Level_4 extends Hole {
     private Polygon platform2 = new Polygon(520,201,520,195,800,195,800,201);
     private Rectangle leftBttn = new Rectangle(100, 100);
     private Rectangle rightBttn = new Rectangle(100, 100);
-    private Rectangle holeRect = new Rectangle(15,10);
+
     private Ellipse holeOval = new Ellipse(7,3);
     private Rectangle green = new Rectangle(177, 8);
     private Line top = new Line(0, 369.9, 900, 369.9);
@@ -27,9 +27,7 @@ public class Level_4 extends Hole {
         platform2.setFill(new Color(86/255f, 86/255f, 86/255f, 1));
 
 
-        holeRect.setFill(Color.LIGHTBLUE);
-        holeRect.setX(660);
-        holeRect.setY(201);
+
 
         holeOval.setFill(Color.BLACK);
         holeOval.centerYProperty().setValue(199);
@@ -48,7 +46,7 @@ public class Level_4 extends Hole {
 
         createButtons();
 
-        getChildren().addAll(sky, grass,platform2, holeRect, green, holeOval, player, leftBttn, rightBttn, player.getWinText(), player.getReturnText(), player.textScore());
+        getChildren().addAll(sky, grass,platform2, green, holeOval, player, leftBttn, rightBttn, player.getWinText(), player.getReturnText(), player.textScore());
     }
 
     public void createButtons(){
