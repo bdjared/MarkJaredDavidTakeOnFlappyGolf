@@ -157,6 +157,6 @@ class CustomPane extends StackPane {
     public CustomPane(String title) {
         getChildren().add(new Label(title));
         setStyle("-fx-border-color: blue");
-        setPadding(new Insets(11.5, 12.5, 13.5, 14.5));
+        setPadding(new Insets(11, 12, 13, 14));
     }
 }
