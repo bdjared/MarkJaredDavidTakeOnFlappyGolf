@@ -162,6 +162,7 @@ public class Ball extends Circle {
                 do {
                     setCenterY(getCenterY() - .1);
                 } while (getBoundsInParent().intersects(lvl.getTop().getBoundsInParent()));
+
                 if (vSpeed > 0)
                 vSpeed /= -3;
             }
