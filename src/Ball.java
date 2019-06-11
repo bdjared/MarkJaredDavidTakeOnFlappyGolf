@@ -1,3 +1,4 @@
+import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.scene.paint.Color;
@@ -31,7 +32,6 @@ public class Ball extends Circle {
         setCenterX(xPos);
         setCenterY(yPos);
         setFill(Color.WHITE);
-        play();
     }
 
     public void jumpLeft() {
@@ -119,7 +119,10 @@ public class Ball extends Circle {
         textScore.setFill(Color.WHITE);
         returnText.setFill(Color.TRANSPARENT);
         winText.setFill(Color.TRANSPARENT);
-        animation.play();
+        if((animation!= null) && (animation.getStatus() == Animation.Status.RUNNING)) {
+            animation.stop();
+        }
+        play();
     }
 
 
@@ -145,12 +148,21 @@ public class Ball extends Circle {
                 hSpeed /= -2;
             }
 
+            if (getCenterX() + getRadius() > lvl.getTop().getEndX() && getCenterY() - getRadius() > lvl.getTopY()) {
+                hSpeed /= -2;
+                setCenterX(lvl.getTop().getEndX() - getRadius());
+            }
+
+            if (getCenterX() - getRadius() < lvl.getTop().getStartX() && getCenterY() - getRadius() > lvl.getTopY()) {
+                hSpeed /= -2;
+                setCenterX(lvl.getTop().getStartX() + getRadius());
+            }
 
             if (getBoundsInParent().intersects(lvl.getTop().getBoundsInParent()) && (getCenterX() > lvl.getHoleOval().getCenterX() + (lvl.getHoleOval().getRadiusX() / 2) || getCenterX() < lvl.getHoleOval().getCenterX() - (lvl.getHoleOval().getRadiusX() / 2))) {
-                for (int i = 0; i < lvl.getTop().getStartX();)
                 do {
                     setCenterY(getCenterY() - .1);
-                } while (contains(getCenterX(), (lvl.getTop().getStartY() + lvl.getTop().getEndY()) / (lvl.getTop().getStartX() - lvl.getTop().getEndX()) * getCenterY()));
+                } while (getBoundsInParent().intersects(lvl.getTop().getBoundsInParent()));
+
                 if (vSpeed > 0)
                 vSpeed /= -3;
             }
@@ -161,12 +173,11 @@ public class Ball extends Circle {
                 setCenterY(getCenterY() + vSpeed);
             }
 
-
             if (getCenterY() + vSpeed - getRadius() < 0) {
                 vSpeed = 0;
             }
 
-            if (getCenterY() - getRadius() > lvl.getGreen().getY() - getRadius() && (getCenterX() < lvl.getHoleOval().getCenterX() + (lvl.getHoleOval().getRadiusX() / 2)) && (getCenterX() > lvl.getHoleOval().getCenterX() - (lvl.getHoleOval().getRadiusX() / 2))) {
+            if ((getCenterY() - getRadius() > lvl.getGreen().getY() - getRadius() && getCenterY() - getRadius() < lvl.getGreen().getY()- getRadius()+20) && (getCenterX() < lvl.getHoleOval().getCenterX() + (lvl.getHoleOval().getRadiusX() / 2)) && (getCenterX() > lvl.getHoleOval().getCenterX() - (lvl.getHoleOval().getRadiusX() / 2))) {
                 setFill(Color.TRANSPARENT);
                 textScore.setFill(Color.TRANSPARENT);
                 win();

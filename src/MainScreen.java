@@ -1,4 +1,3 @@
-import javafx.animation.TranslateTransition;
 import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
@@ -11,54 +10,13 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
-import javafx.util.Duration;
 
 public class MainScreen extends Application {
     public void start(Stage primaryStage) {
         Image clouds = new Image("cloud.png");
         ImageView imageView = new ImageView(clouds);
-
-        Image clouds2 = new Image("cloud.png");
-        ImageView imageView2 = new ImageView((clouds2));
-
-        Image clouds3 = new Image("cloud.png");
-        ImageView imageView3 = new ImageView((clouds3));
-
-
-        imageView3.setX(-1000);
-        imageView3.setY(150);
-        TranslateTransition translateTransition3 = new TranslateTransition();
-        translateTransition3.setDuration(Duration.millis(35000));
-        translateTransition3.setNode(imageView3);
-        translateTransition3.setByX(2300);
-        translateTransition3.setCycleCount(100000);
-        translateTransition3.setAutoReverse(false);
-        translateTransition3.play();
-
-
-        imageView2.setX(-400);
-        imageView2.setY(250);
-        TranslateTransition translateTransition2 = new TranslateTransition();
-        translateTransition2.setDuration(Duration.millis(50000));
-        translateTransition2.setNode(imageView2);
-        translateTransition2.setByX(1300);
-        translateTransition2.setCycleCount(100000);
-        translateTransition2.setAutoReverse(false);
-        translateTransition2.play();
-
-
-
-        imageView.setX(-450);
-        imageView.setY(1);
-        TranslateTransition translateTransition = new TranslateTransition();
-        translateTransition.setDuration(Duration.millis(60000));
-        translateTransition.setNode(imageView);
-        translateTransition.setByX(1300);
-        translateTransition.setCycleCount(100000);
-        translateTransition.setAutoReverse(false);
-        translateTransition.play();
-
-
+        imageView.setX(450);
+        imageView.setY(200);
 
         BorderPane borderPane = new BorderPane();
         Pane pane = new Pane();
@@ -68,8 +26,6 @@ public class MainScreen extends Application {
 
         Hole[] holes = {new Level_1(), new Level_2(), new Level_3(), new Level_4(), new Level_5(), new Level_6(), new Level_7(), new Level_8(), new Level_9()};
         pane.getChildren().add(imageView);
-        pane.getChildren().add(imageView2);
-        pane.getChildren().add(imageView3);
         Scene scene = new Scene(borderPane, 900, 600);
         primaryStage.setTitle("Better Flappy Golf");
 

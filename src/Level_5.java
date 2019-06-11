@@ -5,15 +5,17 @@ import javafx.scene.shape.Polygon;
 import javafx.scene.shape.Rectangle;
 
 public class Level_5 extends Hole {
-    private Ball player = new Ball(100, 358, this);
+    private Ball player = new Ball(100, 258, this);
     private Rectangle sky = new Rectangle(900, 600);
-    private Polygon grass = new Polygon(0, 370, 900, 370, 900, 600, 0, 600);
+    private Polygon grass = new Polygon(0, 270, 500, 270, 500, 420, 900, 420, 900, 600, 0, 600);
     private Rectangle leftBttn = new Rectangle(100, 100);
     private Rectangle rightBttn = new Rectangle(100, 100);
     private Rectangle holeRect = new Rectangle(15,10);
     private Ellipse holeOval = new Ellipse(7,3);
-    private Rectangle green = new Rectangle(177, 8);
-    private Line top = new Line(0, 369.9, 900, 369.9);
+    private Rectangle green = new Rectangle(125, 8);
+    private Line top1 = new Line(0, 269.9, 500, 269.9);
+    private Line top2 = new Line(500, 419.9, 900, 419.9);
+    private double topY = top1.getStartY();
 
     public Level_5() {
         sky.setFill(Color.LIGHTBLUE);
@@ -21,23 +23,26 @@ public class Level_5 extends Hole {
         grass.setFill(new Color(0.23529411764f, 0.8525490196f, 0.01176470588f, 1));
 
         holeRect.setFill(new Color(0.23529411764f, 0.8525490196f, 0.01176470588f, 1));
-        holeRect.setX(660);
-        holeRect.setY(370);
+        holeRect.setX(515);
+        holeRect.setY(420);
 
         holeOval.setFill(Color.BLACK);
-        holeOval.centerYProperty().setValue(373);
-        holeOval.centerXProperty().setValue(667);
+        holeOval.centerYProperty().setValue(423);
+        holeOval.centerXProperty().setValue(523);
 
-        green.setX(559);
-        green.setY(369.5);
+        green.setX(500);
+        green.setY(419.5);
         green.setArcWidth(15);
         green.setArcHeight(15);
         green.setStrokeWidth(1);
         green.setStroke(Color.TRANSPARENT);
         green.setFill(new Color(0f, 141/255f, 23/255f, 1));
 
-        top.setStrokeWidth(.1);
-        top.setFill(Color.TRANSPARENT);
+        top1.setStrokeWidth(.1);
+        top1.setFill(Color.TRANSPARENT);
+
+        top2.setStrokeWidth(.1);
+        top2.setFill(Color.TRANSPARENT);
 
         createButtons();
 
@@ -65,7 +70,13 @@ public class Level_5 extends Hole {
     }
 
     public Line getTop() {
-        return new Line();
+        if (player.getCenterX() < 500)
+            return top1;
+        return top2;
+    }
+
+    public double getTopY() {
+        return topY;
     }
 
     public Ellipse getHoleOval() {
