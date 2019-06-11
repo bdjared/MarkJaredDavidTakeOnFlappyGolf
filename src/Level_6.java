@@ -5,15 +5,16 @@ import javafx.scene.shape.Polygon;
 import javafx.scene.shape.Rectangle;
 
 public class Level_6 extends Hole {
-    private Ball player = new Ball(100, 358, this);
+    private Ball player = new Ball(100, 99, this);
     private Rectangle sky = new Rectangle(900, 600);
-    private Polygon grass = new Polygon(0, 370, 900, 370, 900, 600, 0, 600);
+    private Polygon grass = new Polygon(0, 100, 300, 100, 300, 500, 850, 500, 850, 300,600,300,600,100, 900,100,900,900,0,900);
     private Rectangle leftBttn = new Rectangle(100, 100);
     private Rectangle rightBttn = new Rectangle(100, 100);
     private Rectangle holeRect = new Rectangle(15,10);
     private Ellipse holeOval = new Ellipse(7,3);
-    private Rectangle green = new Rectangle(177, 8);
-    private Line top = new Line(0, 369.9, 900, 369.9);
+    private Rectangle green = new Rectangle(250, 8);
+    private Line top = new Line(0, 100, 900, 100);
+    private Line top1 = new Line(300,500,850,500);
     private double topY = top.getStartY();
 
     public Level_6() {
@@ -21,16 +22,13 @@ public class Level_6 extends Hole {
 
         grass.setFill(new Color(0.23529411764f, 0.8525490196f, 0.01176470588f, 1));
 
-        holeRect.setFill(new Color(0.23529411764f, 0.8525490196f, 0.01176470588f, 1));
-        holeRect.setX(660);
-        holeRect.setY(370);
 
         holeOval.setFill(Color.BLACK);
-        holeOval.centerYProperty().setValue(373);
-        holeOval.centerXProperty().setValue(667);
+        holeOval.centerYProperty().setValue(503);
+        holeOval.centerXProperty().setValue(750);
 
-        green.setX(559);
-        green.setY(369.5);
+        green.setX(565);
+        green.setY(499.5);
         green.setArcWidth(15);
         green.setArcHeight(15);
         green.setStrokeWidth(1);
@@ -66,7 +64,10 @@ public class Level_6 extends Hole {
     }
 
     public Line getTop() {
-        return new Line();
+        if ((player.getCenterX()<=300 || player.getCenterX()> 600) && player.getCenterY() <100)  {
+            return top;
+        }
+        return top1;
     }
 
     public double getTopY() {
