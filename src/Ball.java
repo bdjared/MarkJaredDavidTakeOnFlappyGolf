@@ -147,8 +147,14 @@ public class Ball extends Circle {
                 hSpeed = 0;
             }
 
-            if (getCenterX() + hSpeed + getRadius() > lvl.getWidth() || getCenterX() + hSpeed - getRadius() < 0) {
+            if (getCenterX() + hSpeed - getRadius() < 0) {
                 hSpeed /= -2;
+                setCenterX(0 + getRadius());
+            }
+
+            if (getCenterX() + hSpeed + getRadius() > lvl.getWidth()) {
+                hSpeed /= -2;
+                setCenterX(lvl.getWidth() - getRadius());
             }
 
             if (getCenterX() + getRadius() > lvl.getTop().getEndX() && getCenterY() - getRadius() > lvl.getTopY()) {
@@ -162,17 +168,22 @@ public class Ball extends Circle {
             }
 
             if (getBoundsInParent().intersects(lvl.getTop().getBoundsInParent()) && (getCenterX() > lvl.getHoleOval().getCenterX() + (lvl.getHoleOval().getRadiusX() / 2) || getCenterX() < lvl.getHoleOval().getCenterX() - (lvl.getHoleOval().getRadiusX() / 2))) {
-                if (getCenterY() > 220 || getCenterY() < 180) {
-                    toBack();
+                toBack();
+                if (lvl.getTop().getStartY() < 200) {
                     if (vSpeed > 0)
                         vSpeed /= -3;
-                    setCenterY(getCenterY() + vSpeed);
-                    toFront();
+                    setCenterY(lvl.getTop().getStartY() - getRadius() + vSpeed);
+                }
+                else if (lvl.getTop().getStartY() == 215) {
+                    vSpeed = 0;
+                    setCenterY(215 + getRadius() + 1);
                 }
                 else {
-                    setCenterY(215 + getRadius());
-                    vSpeed = 0;
+                    vSpeed /= -3;
+                    setCenterY(lvl.getTop().getStartY() - getRadius());
                 }
+                toFront();
+
             }
             else if ((getCenterX() < lvl.getHoleOval().getCenterX() + (lvl.getHoleOval().getRadiusX() / 2) && getCenterX() > lvl.getHoleOval().getCenterX() - (lvl.getHoleOval().getRadiusX() / 2) && getBoundsInParent().intersects(lvl.getTop().getBoundsInParent()))) {
                 toFront();
@@ -183,6 +194,7 @@ public class Ball extends Circle {
 
             if (getCenterY() + vSpeed - getRadius() < 0) {
                 vSpeed = 0;
+                setCenterY(getRadius());
             }
 
             if ((getCenterY() - getRadius() > lvl.getGreen().getY() - getRadius() && getCenterY() - getRadius() < lvl.getGreen().getY()- getRadius()+20) && (getCenterX() < lvl.getHoleOval().getCenterX() + (lvl.getHoleOval().getRadiusX() / 2)) && (getCenterX() > lvl.getHoleOval().getCenterX() - (lvl.getHoleOval().getRadiusX() / 2))) {

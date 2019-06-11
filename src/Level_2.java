@@ -7,14 +7,14 @@ import javafx.scene.shape.Rectangle;
 public class Level_2 extends Hole {
     private Ball player = new Ball(100, 358, this);
     private Rectangle sky = new Rectangle(900, 600);
-    private Polygon grass = new Polygon(0, 370, 350, 370, 350, 220, 450, 220, 450, 370, 900, 370, 900, 600, 0, 600);
+    private Polygon grass = new Polygon(0, 370, 350, 370, 350, 225, 450, 225, 450, 370, 900, 370, 900, 600, 0, 600);
     private Rectangle leftBttn = new Rectangle(100, 100);
     private Rectangle rightBttn = new Rectangle(100, 100);
     private Rectangle holeRect = new Rectangle(15,10);
     private Ellipse holeOval = new Ellipse(7,3);
     private Rectangle green = new Rectangle(177, 8);
     private Line top1 = new Line(0, 369.9, 350, 369.9);
-    private Line top2= new Line(350, 219.9, 450, 219.9);
+    private Line top2= new Line(350, 224.9, 450, 224.9);
     private Line top3 = new Line(450, 369.9, 900, 369.9);
     private double topY = top2.getStartY();
 
