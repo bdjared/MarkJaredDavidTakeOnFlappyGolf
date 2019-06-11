@@ -22,7 +22,7 @@ public class MainScreen extends Application {
         imageView.setY(200);
         pane.getChildren().add(imageView);
 
-        borderPane.setTop(new CustomPane("Niggaz in Paris"));
+        borderPane.setTop(new CustomPane("Mark Jared and David Land"));
         borderPane.setCenter(pane);
         borderPane.setBackground(new Background(new BackgroundFill(Color.LIGHTBLUE, CornerRadii.EMPTY, Insets.EMPTY)));
 
