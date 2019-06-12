@@ -5,40 +5,42 @@ import javafx.scene.shape.Polygon;
 import javafx.scene.shape.Rectangle;
 
 public class Level_7 extends Hole {
-    private Ball player = new Ball(175, 163, this);
+    private Ball player = new Ball(200, 163, this);
     private Rectangle sky = new Rectangle(900, 600);
     private Polygon grass = new Polygon(0, 370, 900, 370, 900, 600, 0, 600);
+    private Rectangle platform1 = new Rectangle(200, 40);
+    private Rectangle platform2 = new Rectangle(200, 40);
     private Rectangle leftBttn = new Rectangle(100, 100);
     private Rectangle rightBttn = new Rectangle(100, 100);
+
     private Ellipse holeOval = new Ellipse(7,3);
-    private Rectangle green = new Rectangle(177, 8);
-    private Line top1 = new Line(150,175,350,175);
-    private Line top2 = new Line(150,215,350,215);
-    private Line top3 = new Line(550,175,750,175);
-    private Line top4 = new Line(550,215,750,215);
-    private double topY;
-    private Rectangle startPlatform = new Rectangle(200, 40);
-    private Rectangle endPlatform = new Rectangle(200, 40);
+    private Rectangle green = new Rectangle(130, 8);
+    private Line top1 = new Line(0, 969.9, 900, 969.9);
+    private Line top2 = new Line(575,175,775,175);
+    private Line top3 = new Line(575,215,775,215);
+    private Line top4 = new Line(125,175,325,175);
+    private Line top5 = new Line(125,215,325,215);
+    private double topY = top1.getStartY();
 
     public Level_7() {
         sky.setFill(Color.LIGHTBLUE);
 
         grass.setFill(new Color(0.23529411764f, 0.8525490196f, 0.01176470588f, 1));
 
-        startPlatform.setX(150);
-        startPlatform.setY(175);
-        startPlatform.setFill(grass.getFill());
+        platform1.setFill(grass.getFill());
+        platform1.setX(575);
+        platform1.setY(175);
 
-        endPlatform.setX(550);
-        endPlatform.setY(175);
-        endPlatform.setFill(grass.getFill());
+        platform2.setFill(grass.getFill());
+        platform2.setX(125);
+        platform2.setY(175);
 
         holeOval.setFill(Color.BLACK);
-        holeOval.centerYProperty().setValue(373);
-        holeOval.centerXProperty().setValue(667);
+        holeOval.centerYProperty().setValue(179);
+        holeOval.centerXProperty().setValue(687);
 
-        green.setX(559);
-        green.setY(369.5);
+        green.setX(605);
+        green.setY(174.5);
         green.setArcWidth(15);
         green.setArcHeight(15);
         green.setStrokeWidth(1);
@@ -57,9 +59,12 @@ public class Level_7 extends Hole {
         top4.setStrokeWidth(.1);
         top4.setFill(Color.TRANSPARENT);
 
+        top5.setStrokeWidth(.1);
+        top5.setFill(Color.TRANSPARENT);
+
         createButtons();
 
-        getChildren().addAll(sky, startPlatform, endPlatform, holeOval, player, leftBttn, rightBttn, player.getWinText(), player.getReturnText(), player.textScore());
+        getChildren().addAll(sky, platform1, platform2, green, holeOval, player, leftBttn, rightBttn, player.getWinText(), player.getReturnText(), player.textScore());
     }
 
     public void createButtons(){
@@ -83,13 +88,15 @@ public class Level_7 extends Hole {
     }
 
     public Line getTop() {
-        if (player.getBoundsInParent().intersects(top1.getBoundsInParent()))
+        if (player.getCenterY() > 215)
             return top1;
-        if (player.getBoundsInParent().intersects(top2.getBoundsInParent()))
+        if (player.getCenterY() < 175 && player.getCenterX() > top2.getStartX() && player.getCenterX() < top2.getEndX())
             return top2;
-        if (player.getBoundsInParent().intersects(top2.getBoundsInParent()))
+        if (player.getCenterY() < 215 && player.getCenterX() > top3.getStartX() && player.getCenterX() < top3.getEndX())
             return top3;
-        return top4;
+        if (player.getCenterY() < 175 && player.getCenterX() > top4.getStartX() && player.getCenterX() < top4.getEndX())
+            return top4;
+        return top5;
     }
 
     public double getTopY() {

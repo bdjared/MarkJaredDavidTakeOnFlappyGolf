@@ -203,7 +203,7 @@ public class Ball extends Circle {
                 win();
             }
 
-            if (getCenterY() + getRadius() > lvl.getHeight()) {
+            if (getCenterY() - getRadius() > lvl.getHeight()) {
                 reset();
             }
         }));
