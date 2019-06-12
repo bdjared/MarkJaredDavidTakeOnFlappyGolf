@@ -7,15 +7,16 @@ import javafx.scene.shape.Rectangle;
 public class Level_6 extends Hole {
     private Ball player = new Ball(100, 99, this);
     private Rectangle sky = new Rectangle(900, 600);
-    private Polygon grass = new Polygon(0, 100, 300, 100, 300, 500, 850, 500, 850, 300,600,300,600,100, 900,100,900,900,0,900);
+    private Polygon grass = new Polygon(0, 100, 300, 100, 300, 500,500,500,500,400, 850, 400, 850, 215,600,215,600,100, 900,100,900,900,0,900);
     private Rectangle leftBttn = new Rectangle(100, 100);
     private Rectangle rightBttn = new Rectangle(100, 100);
     private Ellipse holeOval = new Ellipse(7,3);
     private Rectangle green = new Rectangle(250, 8);
-    private Line top = new Line(0, 100, 900, 100);
-    private Line top1 = new Line(300,500,850,500);
-    private Line top2 = new Line(600,300,850 ,300);
-    private double topY = top.getStartY();
+    private Line top = new Line(0, 100, 300, 100);
+    private Line top3 = new Line(600,100,900,100);
+    private Line top1 = new Line(300,500,500,500);
+    private Line top15 = new Line(500,400,850,400);
+    private Line top2 = new Line(600,215,850 ,215);
 
     public Level_6() {
         sky.setFill(Color.LIGHTBLUE);
@@ -24,11 +25,11 @@ public class Level_6 extends Hole {
 
 
         holeOval.setFill(Color.BLACK);
-        holeOval.centerYProperty().setValue(503);
+        holeOval.centerYProperty().setValue(404);
         holeOval.centerXProperty().setValue(750);
 
-        green.setX(565);
-        green.setY(499.5);
+        green.setX(600);
+        green.setY(399.5);
         green.setArcWidth(15);
         green.setArcHeight(15);
         green.setStrokeWidth(1);
@@ -64,14 +65,28 @@ public class Level_6 extends Hole {
     }
 
     public Line getTop() {
-        if ((player.getCenterX()<=300 || player.getCenterX()> 600) && player.getCenterY() <100)  {
+        if (player.getCenterX()<=300 && player.getCenterY() <100)  {
             return top;
+        }
+
+        else if(player.getCenterX() > 600 && player.getCenterY() <100){
+            return top3;
+        }
+
+        else if (player.getCenterX()>500 && player.getCenterY() > 215 && player.getCenterY() <220){
+            return top2;
+        }
+        else if(player.getCenterX() >500 && player.getCenterY()<400 && player.getCenterY() >380){
+            return top15;
+        }
+        else if(player.getCenterX()<500 && player.getCenterY()>400){
+            return top1;
         }
         return top1;
     }
 
     public double getTopY() {
-        return topY;
+        return getTop().getStartY();
     }
 
     public Ellipse getHoleOval() {
