@@ -7,30 +7,30 @@ import javafx.scene.shape.Rectangle;
 public class Level_6 extends Hole {
     private Ball player = new Ball(100, 358, this);
     private Rectangle sky = new Rectangle(900, 600);
-    private Polygon grass = new Polygon(0, 370, 900, 370, 900, 600, 0, 600);
+    private Polygon grass = new Polygon(0, 370,200,370, 200, 280,400,280,400,200,600,200,600,100,900,100,900, 600, 0, 600);
     private Rectangle leftBttn = new Rectangle(100, 100);
     private Rectangle rightBttn = new Rectangle(100, 100);
-    private Rectangle holeRect = new Rectangle(15,10);
+
     private Ellipse holeOval = new Ellipse(7,3);
-    private Rectangle green = new Rectangle(177, 8);
-    private Line top = new Line(0, 369.9, 900, 369.9);
-    private double topY = top.getStartY();
+    private Rectangle green = new Rectangle(200, 8);
+    private Line top = new Line(0, 369.9, 200, 369.9);
+    private Line top1 = new Line(200,280,400,280);
+    private Line top2 = new Line(400,200,600,200);
+    private Line top3 = new Line(600,100,900,100);
+    private double topY;
 
     public Level_6() {
         sky.setFill(Color.LIGHTBLUE);
 
+
         grass.setFill(new Color(0.23529411764f, 0.8525490196f, 0.01176470588f, 1));
 
-        holeRect.setFill(new Color(0.23529411764f, 0.8525490196f, 0.01176470588f, 1));
-        holeRect.setX(660);
-        holeRect.setY(370);
-
         holeOval.setFill(Color.BLACK);
-        holeOval.centerYProperty().setValue(373);
-        holeOval.centerXProperty().setValue(667);
+        holeOval.centerYProperty().setValue(103);
+        holeOval.centerXProperty().setValue(820);
 
-        green.setX(559);
-        green.setY(369.5);
+        green.setX(680);
+        green.setY(99.5);
         green.setArcWidth(15);
         green.setArcHeight(15);
         green.setStrokeWidth(1);
@@ -42,7 +42,7 @@ public class Level_6 extends Hole {
 
         createButtons();
 
-        getChildren().addAll(sky, grass, holeRect, green, holeOval, player, leftBttn, rightBttn, player.getWinText(), player.getReturnText(), player.textScore());
+        getChildren().addAll(sky, grass, green, holeOval, player, leftBttn, rightBttn, player.getWinText(), player.getReturnText(), player.textScore());
     }
 
     public void createButtons(){
@@ -66,11 +66,20 @@ public class Level_6 extends Hole {
     }
 
     public Line getTop() {
+        if(player.getCenterX()>200 && player.getCenterX()<400){
+            return top1;
+        }
+        else if(player.getCenterX()>400 && player.getCenterX()<600){
+            return top2;
+        }
+        else if(player.getCenterX()>600){
+            return top3;
+        }
         return top;
     }
 
     public double getTopY() {
-        return topY;
+        return getTop().getStartY();
     }
 
     public Ellipse getHoleOval() {
