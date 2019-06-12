@@ -7,30 +7,28 @@ import javafx.scene.shape.Rectangle;
 public class Level_8 extends Hole {
     private Ball player = new Ball(100, 358, this);
     private Rectangle sky = new Rectangle(900, 600);
-    private Polygon grass = new Polygon(0, 370, 900, 370, 900, 600, 0, 600);
+    private Polygon grass = new Polygon(0, 370,125,370,125,14,200,14,200,50, 900,50, 900, 600, 0, 600);
     private Rectangle leftBttn = new Rectangle(100, 100);
     private Rectangle rightBttn = new Rectangle(100, 100);
-    private Rectangle holeRect = new Rectangle(15,10);
     private Ellipse holeOval = new Ellipse(7,3);
-    private Rectangle green = new Rectangle(177, 8);
+    private Rectangle green = new Rectangle(650, 8);
     private Line top = new Line(0, 369.9, 900, 369.9);
-    private double topY = top.getStartY();
+    private Line top1 = new Line(125,14,200,14);
+    private Line top2 = new Line(200, 50,900,50);
+    private double topY = top1.getStartY();
 
     public Level_8() {
         sky.setFill(Color.LIGHTBLUE);
 
         grass.setFill(new Color(0.23529411764f, 0.8525490196f, 0.01176470588f, 1));
 
-        holeRect.setFill(new Color(0.23529411764f, 0.8525490196f, 0.01176470588f, 1));
-        holeRect.setX(660);
-        holeRect.setY(370);
 
         holeOval.setFill(Color.BLACK);
-        holeOval.centerYProperty().setValue(373);
-        holeOval.centerXProperty().setValue(667);
+        holeOval.centerYProperty().setValue(53);
+        holeOval.centerXProperty().setValue(675);
 
-        green.setX(559);
-        green.setY(369.5);
+        green.setX(250);
+        green.setY(49.5);
         green.setArcWidth(15);
         green.setArcHeight(15);
         green.setStrokeWidth(1);
@@ -42,7 +40,7 @@ public class Level_8 extends Hole {
 
         createButtons();
 
-        getChildren().addAll(sky, grass, holeRect, green, holeOval, player, leftBttn, rightBttn, player.getWinText(), player.getReturnText(), player.textScore());
+        getChildren().addAll(sky, grass, green, holeOval, player, leftBttn, rightBttn, player.getWinText(), player.getReturnText(), player.textScore());
     }
 
     public void createButtons(){
@@ -66,6 +64,13 @@ public class Level_8 extends Hole {
     }
 
     public Line getTop() {
+        if(player.getCenterX()>125 &&player.getCenterX()<200){
+            return top1;
+        }
+        else if(player.getCenterX()>200){
+            return top2;
+        }
+
         return top;
     }
 

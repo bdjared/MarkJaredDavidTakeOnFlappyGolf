@@ -10,7 +10,8 @@ public class Level_6 extends Hole {
     private Polygon grass = new Polygon(0, 370,200,370, 200, 280,400,280,400,200,600,200,600,100,900,100,900, 600, 0, 600);
     private Rectangle leftBttn = new Rectangle(100, 100);
     private Rectangle rightBttn = new Rectangle(100, 100);
-
+    private Rectangle pillar = new Rectangle(4,180);
+    private Rectangle pillar1 = new Rectangle(4,100);
     private Ellipse holeOval = new Ellipse(7,3);
     private Rectangle green = new Rectangle(200, 8);
     private Line top = new Line(0, 369.9, 200, 369.9);
@@ -19,9 +20,13 @@ public class Level_6 extends Hole {
     private Line top3 = new Line(600,100,900,100);
     private double topY;
 
+
     public Level_6() {
         sky.setFill(Color.LIGHTBLUE);
-
+        pillar.setX(200);
+        pillar.setY(100);
+        pillar1.setX(400);
+        pillar1.setY(100);
 
         grass.setFill(new Color(0.23529411764f, 0.8525490196f, 0.01176470588f, 1));
 
@@ -42,7 +47,7 @@ public class Level_6 extends Hole {
 
         createButtons();
 
-        getChildren().addAll(sky, grass, green, holeOval, player, leftBttn, rightBttn, player.getWinText(), player.getReturnText(), player.textScore());
+        getChildren().addAll(sky, grass, green, holeOval, player, leftBttn, rightBttn, player.getWinText(), player.getReturnText(), player.textScore(),pillar,pillar1);
     }
 
     public void createButtons(){
@@ -79,9 +84,8 @@ public class Level_6 extends Hole {
     }
 
     public double getTopY() {
-        return getTop().getStartY();
+        return top3.getStartY();
     }
-
     public Ellipse getHoleOval() {
         return holeOval;
     }
