@@ -176,7 +176,7 @@ public class Ball extends Circle {
                 }
                 else if (lvl.getTop().getStartY() == 215) {
                     vSpeed = 0;
-                    setCenterY(215 + getRadius() + 1);
+                    setCenterY(215 + getRadius());
                 }
                 else {
                     vSpeed /= -3;

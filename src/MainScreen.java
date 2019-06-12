@@ -147,6 +147,59 @@ public class MainScreen extends Application {
             pane.getChildren().addAll(levelBttn, levelTxt, greyCircle);
         }
 
+        scene.setOnKeyPressed(a -> {
+            if (a.getCode() == KeyCode.UP)
+                scene.setOnKeyPressed(b -> {
+                    if (b.getCode() == KeyCode.UP)
+                        scene.setOnKeyPressed(c -> {
+                            if (c.getCode() == KeyCode.DOWN)
+                                scene.setOnKeyPressed(d -> {
+                                    if (d.getCode() == KeyCode.DOWN)
+                                        scene.setOnKeyPressed(e -> {
+                                            if (e.getCode() == KeyCode.LEFT)
+                                                scene.setOnKeyPressed(f -> {
+                                                    if (f.getCode() == KeyCode.RIGHT)
+                                                        scene.setOnKeyPressed(g -> {
+                                                            if (g.getCode() == KeyCode.LEFT)
+                                                                scene.setOnKeyPressed(h -> {
+                                                                    if (h.getCode() == KeyCode.RIGHT)
+                                                                        scene.setOnKeyPressed(i -> {
+                                                                            if (i.getCode() == KeyCode.B)
+                                                                                scene.setOnKeyPressed(j -> {
+                                                                                    if (j.getCode() == KeyCode.A)
+                                                                                        scene.setOnKeyPressed(k -> {
+                                                                                            if (k.getCode() == KeyCode.ENTER) {
+                                                                                                Hole lvl = new Level_10();
+                                                                                                Scene lvlScene = new Scene(lvl, 900, 600);
+                                                                                                lvl.getPlayer().reset();
+                                                                                                lvlScene.setOnKeyPressed(l -> {
+                                                                                                    if (l.getCode() == KeyCode.LEFT)
+                                                                                                        lvl.getPlayer().jumpLeft();
+                                                                                                    else if (a.getCode() == KeyCode.RIGHT)
+                                                                                                        lvl.getPlayer().jumpRight();
+                                                                                                    if (l.getCode() == KeyCode.ESCAPE) {
+                                                                                                        lvl.getPlayer().getAnimation().pause();
+                                                                                                        primaryStage.setScene(scene);
+                                                                                                        primaryStage.show();
+                                                                                                        primaryStage.requestFocus();
+                                                                                                    }
+                                                                                                    if (l.getCode() == KeyCode.R) {
+                                                                                                        lvl.getPlayer().reset();
+                                                                                                    }
+                                                                                                });
+                                                                                            }
+                                                                                        });
+                                                                                });
+                                                                        });
+                                                                });
+                                                        });
+                                                });
+                                        });
+                                });
+                        });
+                });
+        });
+
         primaryStage.setScene(scene);
         primaryStage.setResizable(false);
         primaryStage.show();
