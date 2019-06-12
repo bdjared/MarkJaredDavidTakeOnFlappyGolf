@@ -75,9 +75,9 @@ public class Level_4 extends Hole {
     }
 
     public Line getTop() {
-        if (player.getBoundsInParent().intersects(grass.getBoundsInParent()))
+        if (player.getCenterY() > 215)
             return top1;
-        if (player.getCenterY() < 180)
+        if (player.getCenterY() < 175)
             return top2;
         return top3;
     }
