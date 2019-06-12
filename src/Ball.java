@@ -156,6 +156,7 @@ public class Ball extends Circle {
                 hSpeed /= -2;
                 setCenterX(lvl.getWidth() - getRadius());
             }
+
             if (getCenterX() + getRadius() > lvl.getTop().getEndX() && getCenterY() - getRadius() > lvl.getTopY()) {
                 hSpeed /= -2;
                 setCenterX(lvl.getTop().getEndX() - getRadius());
@@ -203,7 +204,7 @@ public class Ball extends Circle {
                 win();
             }
 
-            if (getCenterY() - getRadius() > lvl.getHeight()) {
+            if (getCenterY() - getRadius() > lvl.getHeight() + 10) {
                 reset();
             }
         }));
