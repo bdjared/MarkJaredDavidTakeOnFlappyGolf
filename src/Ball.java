@@ -185,7 +185,7 @@ public class Ball extends Circle {
                 toFront();
 
             }
-            else if ((getCenterX() < lvl.getHoleOval().getCenterX() + (lvl.getHoleOval().getRadiusX() / 2) && getCenterX() > lvl.getHoleOval().getCenterX() - (lvl.getHoleOval().getRadiusX() / 2) && getBoundsInParent().intersects(lvl.getTop().getBoundsInParent()))) {
+            else if ((getCenterX() < lvl.getHoleOval().getCenterX() + (lvl.getHoleOval().getRadiusX() / 2) && getCenterX() < lvl.getHoleOval().getCenterX() - (lvl.getHoleOval().getRadiusX() / 2) && getBoundsInParent().intersects(lvl.getTop().getBoundsInParent()))) {
                 toFront();
                 if (vSpeed < 1)
                     vSpeed = .9;
@@ -201,6 +201,10 @@ public class Ball extends Circle {
                 setFill(Color.TRANSPARENT);
                 textScore.setFill(Color.TRANSPARENT);
                 win();
+            }
+
+            if (getCenterY() + getRadius() > lvl.getHeight()) {
+                reset();
             }
         }));
         animation.setCycleCount(Timeline.INDEFINITE);
