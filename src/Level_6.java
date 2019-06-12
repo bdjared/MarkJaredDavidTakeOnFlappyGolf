@@ -20,6 +20,7 @@ public class Level_6 extends Hole {
     private Line top3 = new Line(600,100,900,100);
     private double topY;
 
+
     public Level_6() {
         sky.setFill(Color.LIGHTBLUE);
         pillar.setX(200);
