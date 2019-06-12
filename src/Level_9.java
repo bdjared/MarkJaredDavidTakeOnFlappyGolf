@@ -66,7 +66,7 @@ public class Level_9 extends Hole {
     }
 
     public Line getTop() {
-        return new Line();
+        return top;
     }
 
     public double getTopY() {
