@@ -14,6 +14,7 @@ public class Level_6 extends Hole {
     private Rectangle green = new Rectangle(250, 8);
     private Line top = new Line(0, 100, 900, 100);
     private Line top1 = new Line(300,500,850,500);
+    private Line top2 = new Line(600,300,850 ,300);
     private double topY = top.getStartY();
 
     public Level_6() {
