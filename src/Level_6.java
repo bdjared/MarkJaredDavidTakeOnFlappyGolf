@@ -27,6 +27,8 @@ public class Level_6 extends Hole {
         pillar.setY(100);
         pillar1.setX(400);
         pillar1.setY(100);
+        pillar.setFill(new Color(0.23529411764f, 0.8525490196f, 0.01176470588f, 1));
+        pillar1.setFill(new Color(0.23529411764f, 0.8525490196f, 0.01176470588f, 1));
 
         grass.setFill(new Color(0.23529411764f, 0.8525490196f, 0.01176470588f, 1));
 
