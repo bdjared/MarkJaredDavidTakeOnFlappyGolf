@@ -8,6 +8,8 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.util.Duration;
@@ -72,13 +74,14 @@ public class MainScreen extends Application {
         for (int i = 0; i < 5; i++) {
             ImageView levelBttn = new ImageView(golfBall);
             levelBttn.setFitHeight(100);
-            levelBttn.setFitWidth(125);
+            levelBttn.setFitWidth(136);
             levelBttn.setX(150 + i * 150 - 50);
             levelBttn.setY(150);
 
             Text levelTxt = new Text("" + (i + 1));
-            levelTxt.setX(levelBttn.getX());
-            levelTxt.setY(levelBttn.getY());
+            levelTxt.setFont(Font.font("Comic Sans", FontWeight.BOLD, 30));
+            levelTxt.setX(levelBttn.getX() + 65);
+            levelTxt.setY(levelBttn.getY() + 60);
             levelTxt.setFill(Color.BLACK);
 
             Hole lvl = holes[i];
@@ -107,6 +110,30 @@ public class MainScreen extends Application {
                 primaryStage.show();
                 primaryStage.requestFocus();
             });
+            levelTxt.setOnMousePressed(e -> {
+                lvl.getPlayer().reset();
+
+                lvlScene.setOnKeyPressed(a -> {
+                    if (a.getCode() == KeyCode.LEFT)
+                        lvl.getPlayer().jumpLeft();
+                    else if (a.getCode() == KeyCode.RIGHT)
+                        lvl.getPlayer().jumpRight();
+                    if (a.getCode() == KeyCode.ESCAPE) {
+                        lvl.getPlayer().getAnimation().pause();
+                        primaryStage.setScene(scene);
+                        primaryStage.show();
+                        primaryStage.requestFocus();
+                    }
+                    if (a.getCode() == KeyCode.R) {
+                        lvl.getPlayer().reset();
+                    }
+                });
+
+                primaryStage.setScene(lvlScene);
+                primaryStage.show();
+                primaryStage.requestFocus();
+            });
+
 
             pane.getChildren().addAll(levelBttn, levelTxt);
         }
@@ -115,14 +142,15 @@ public class MainScreen extends Application {
         for (int i = 5; i < 9; ++i) {
             ImageView levelBttn = new ImageView(golfBall);
             levelBttn.setFitHeight(100);
-            levelBttn.setFitWidth(125);
+            levelBttn.setFitWidth(136);
             levelBttn.setX(225 + (i-5) * 150 - 50);
             levelBttn.setY(300);
 
 
             Text levelTxt = new Text("" + (i+1));
-            levelTxt.setX(levelBttn.getX());
-            levelTxt.setY(levelBttn.getY());
+            levelTxt.setFont(Font.font("Comic Sans", FontWeight.BOLD, 30));
+            levelTxt.setX(levelBttn.getX() + 65);
+            levelTxt.setY(levelBttn.getY() + 60);
             levelTxt.setFill(Color.BLACK);
 
             Hole lvl = holes[i];
@@ -143,6 +171,29 @@ public class MainScreen extends Application {
                         primaryStage.requestFocus();
                     }
                     if (a.getCode() == KeyCode.R){
+                        lvl.getPlayer().reset();
+                    }
+                });
+
+                primaryStage.setScene(lvlScene);
+                primaryStage.show();
+                primaryStage.requestFocus();
+            });
+            levelTxt.setOnMousePressed(e -> {
+                lvl.getPlayer().reset();
+
+                lvlScene.setOnKeyPressed(a -> {
+                    if (a.getCode() == KeyCode.LEFT)
+                        lvl.getPlayer().jumpLeft();
+                    else if (a.getCode() == KeyCode.RIGHT)
+                        lvl.getPlayer().jumpRight();
+                    if (a.getCode() == KeyCode.ESCAPE) {
+                        lvl.getPlayer().getAnimation().pause();
+                        primaryStage.setScene(scene);
+                        primaryStage.show();
+                        primaryStage.requestFocus();
+                    }
+                    if (a.getCode() == KeyCode.R) {
                         lvl.getPlayer().reset();
                     }
                 });
