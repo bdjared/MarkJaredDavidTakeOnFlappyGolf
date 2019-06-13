@@ -6,12 +6,12 @@ import javafx.scene.shape.Rectangle;
 
 public class Level_8 extends Hole {
     private Ball player = new Ball(100, 358, this);
-    private Rectangle sky = new Rectangle(900, 600);
+    private Rectangle sky = new Rectangle(900, 601);
     private Polygon grass = new Polygon(0, 370,125,370,125,14,200,14,200,50, 900,50, 900, 600, 0, 600);
     private Rectangle leftBttn = new Rectangle(100, 100);
     private Rectangle rightBttn = new Rectangle(100, 100);
     private Ellipse holeOval = new Ellipse(7,3);
-    private Rectangle green = new Rectangle(650, 8);
+    private Rectangle green = new Rectangle(700, 8);
     private Line top = new Line(0, 369.9, 900, 369.9);
     private Line top1 = new Line(125,14,200,14);
     private Line top2 = new Line(200, 50,900,50);
@@ -27,7 +27,7 @@ public class Level_8 extends Hole {
         holeOval.centerYProperty().setValue(53);
         holeOval.centerXProperty().setValue(675);
 
-        green.setX(250);
+        green.setX(200);
         green.setY(49.5);
         green.setArcWidth(15);
         green.setArcHeight(15);
@@ -41,6 +41,10 @@ public class Level_8 extends Hole {
         createButtons();
 
         getChildren().addAll(sky, grass, green, holeOval, player, leftBttn, rightBttn, player.getWinText(), player.getReturnText(), player.textScore());
+    }
+
+    public Rectangle getSky() {
+        return sky;
     }
 
     public void createButtons(){

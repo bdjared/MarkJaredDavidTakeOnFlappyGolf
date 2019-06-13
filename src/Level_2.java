@@ -96,4 +96,8 @@ public class Level_2 extends Hole {
     public Rectangle getGreen() {
         return green;
     }
+
+    public Rectangle getSky() {
+        return sky;
+    }
 }

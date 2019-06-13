@@ -17,4 +17,6 @@ public abstract class Hole extends Pane {
     public abstract Ball getPlayer();
 
     public abstract double getTopY();
+
+    public abstract Rectangle getSky();
 }

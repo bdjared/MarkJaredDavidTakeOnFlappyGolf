@@ -6,7 +6,7 @@ import javafx.scene.shape.Rectangle;
 
 public class Level_4 extends Hole {
     private Ball player = new Ball(100, 358, this);
-    private Rectangle sky = new Rectangle(900, 600);
+    private Rectangle sky = new Rectangle(900, 602);
     private Polygon grass = new Polygon(0, 370, 900, 370, 900, 600, 0, 600);
     private Rectangle platform = new Rectangle(250, 40);
     private Rectangle leftBttn = new Rectangle(100, 100);
@@ -96,5 +96,9 @@ public class Level_4 extends Hole {
 
     public Rectangle getGreen() {
         return green;
+    }
+
+    public Rectangle getSky() {
+        return sky;
     }
 }
