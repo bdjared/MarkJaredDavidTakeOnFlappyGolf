@@ -1,3 +1,4 @@
+import javafx.animation.Timeline;
 import javafx.animation.TranslateTransition;
 import javafx.application.Application;
 import javafx.geometry.Insets;
@@ -37,7 +38,7 @@ public class MainScreen extends Application {
         translateTransition3.setDuration(Duration.millis(35000));
         translateTransition3.setNode(imageView3);
         translateTransition3.setByX(2300);
-        translateTransition3.setCycleCount(100000);
+        translateTransition3.setCycleCount(Timeline.INDEFINITE);
         translateTransition3.setAutoReverse(false);
         translateTransition3.play();
 
@@ -45,15 +46,15 @@ public class MainScreen extends Application {
         translateTransition2.setDuration(Duration.millis(50000));
         translateTransition2.setNode(imageView2);
         translateTransition2.setByX(1300);
-        translateTransition2.setCycleCount(100000);
+        translateTransition2.setCycleCount(Timeline.INDEFINITE);
         translateTransition2.setAutoReverse(false);
         translateTransition2.play();
 
         TranslateTransition translateTransition = new TranslateTransition();
         translateTransition.setDuration(Duration.millis(60000));
         translateTransition.setNode(imageView);
-        translateTransition.setByX(1300);
-        translateTransition.setCycleCount(100000);
+        translateTransition.setByX(1400);
+        translateTransition.setCycleCount(Timeline.INDEFINITE);
         translateTransition.setAutoReverse(false);
         translateTransition.play();
 
