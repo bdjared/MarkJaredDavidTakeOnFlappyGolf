@@ -70,7 +70,7 @@ public class MainScreen extends Application {
         pane.getChildren().add(imageView2);
         pane.getChildren().add(imageView3);
         Scene scene = new Scene(borderPane, 900, 600);
-        primaryStage.setTitle("Better Flappy Golf");
+        primaryStage.setTitle("Mark, Jared, David take on Flappy Golf");
 
         for (int i = 0; i < 5; i++) {
             ImageView levelBttn = new ImageView(golfBall);
