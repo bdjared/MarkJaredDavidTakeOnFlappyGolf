@@ -8,7 +8,6 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
-import javafx.scene.shape.Circle;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.util.Duration;
@@ -16,8 +15,6 @@ import javafx.util.Duration;
 public class MainScreen extends Application {
     public void start(Stage primaryStage) {
         Image golfBall = new Image("cbt.png.png");
-        ImageView golfBallView = new ImageView(golfBall);
-
 
         Image clouds = new Image("cloud.png");
         ImageView imageView = new ImageView(clouds);

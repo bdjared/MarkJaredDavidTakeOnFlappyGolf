@@ -176,6 +176,13 @@ public class Ball extends Circle {
                     hSpeed /= -2;
                     setCenterX(775 + getRadius());
                 }
+                if (getCenterX() > lvl.getHoleOval().getCenterX() - 7 && getCenterX() < lvl.getHoleOval().getCenterX() + 7) {
+                    if (getCenterY() < 200 && getCenterY() > 175) {
+                        setFill(Color.TRANSPARENT);
+                        textScore.setFill(Color.TRANSPARENT);
+                        win();
+                    }
+                }
             }
 
             else if (lvl.getSky().getHeight() == 603){
@@ -194,6 +201,13 @@ public class Ball extends Circle {
                 if (getCenterX() - getRadius() < 775 && getCenterX() > 774 && getCenterY() - getRadius() < 215 && getCenterY() + getRadius() > 175) {
                     hSpeed /= -2;
                     setCenterX(775 + getRadius());
+                }
+                if (getCenterX() > lvl.getHoleOval().getCenterX() - 7 && getCenterX() < lvl.getHoleOval().getCenterX() + 7) {
+                    if (getCenterY() < 200 && getCenterY() > 175) {
+                        setFill(Color.TRANSPARENT);
+                        textScore.setFill(Color.TRANSPARENT);
+                        win();
+                    }
                 }
             }
 
