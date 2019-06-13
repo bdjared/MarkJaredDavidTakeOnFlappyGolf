@@ -80,7 +80,7 @@ public class MainScreen extends Application {
             levelBttn.setY(150);
 
             Text levelTxt = new Text("" + (i + 1));
-            levelTxt.setFont(Font.font("Comic Sans", FontWeight.BOLD, 30));
+            levelTxt.setFont(Font.font("comic sans ms", FontWeight.BOLD, 30));
             levelTxt.setX(levelBttn.getX() + 65);
             levelTxt.setY(levelBttn.getY() + 60);
             levelTxt.setFill(Color.BLACK);
@@ -149,7 +149,7 @@ public class MainScreen extends Application {
 
 
             Text levelTxt = new Text("" + (i+1));
-            levelTxt.setFont(Font.font("Comic Sans", FontWeight.BOLD, 30));
+            levelTxt.setFont(Font.font("comic sans ms", FontWeight.BOLD, 30));
             levelTxt.setX(levelBttn.getX() + 65);
             levelTxt.setY(levelBttn.getY() + 60);
             levelTxt.setFill(Color.BLACK);
@@ -215,7 +215,9 @@ public class MainScreen extends Application {
 
 class CustomPane extends StackPane {
     public CustomPane(String title) {
-        getChildren().add(new Label(title));
+        Label top = new Label(title);
+        top.setFont(Font.font("comic sans ms"));
+        getChildren().add(top);
         setStyle("-fx-border-color: blue");
         setPadding(new Insets(11.5, 12.5, 13.5, 14.5));
     }

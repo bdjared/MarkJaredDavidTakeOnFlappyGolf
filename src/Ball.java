@@ -271,11 +271,11 @@ public class Ball extends Circle {
         winText.setFill(Color.WHITE);
         winText.setX(lvl.getWidth() / 3.5);
         winText.setY(lvl.getHeight() / 2);
-        winText.setFont(new Font(100));
+        winText.setFont(Font.font("comic sans ms", 100));
         returnText.setText("Press 'ESC' to return to the main screen.");
         returnText.setFill(Color.DIMGRAY);
         returnText.setX(lvl.getWidth() / 4.1);
         returnText.setY(lvl.getHeight()/ 1.5);
-        returnText.setFont(new Font(25));
+        returnText.setFont(Font.font("comic sans ms", 25));
     }
 }
