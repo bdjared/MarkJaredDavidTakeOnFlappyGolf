@@ -125,7 +125,6 @@ public class Ball extends Circle {
         play();
     }
 
-
     public void play() {
         animation = new Timeline(new KeyFrame(Duration.millis(1000 / 60.0), e -> {
             setCenterX(getCenterX() + hSpeed);
